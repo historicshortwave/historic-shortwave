@@ -1,0 +1,148 @@
+{
+ "90m": {
+  "merges": [
+   {
+    "kept": "90M-0050",
+    "held": [
+     "90M-0051"
+    ],
+    "station": "Guyana Broadcasting Service (Action Radio)",
+    "frequencyHz": 3290000
+   },
+   {
+    "kept": "90M-0054",
+    "held": [
+     "90M-0052"
+    ],
+    "station": "Guyana Broadcasting Service (Action Radio)",
+    "frequencyHz": 3290000
+   },
+   {
+    "kept": "90M-0077",
+    "held": [
+     "90M-0076"
+    ],
+    "station": "Radio Bougainville",
+    "frequencyHz": 3322500
+   },
+   {
+    "kept": "90M-0101",
+    "held": [
+     "90M-0102"
+    ],
+    "station": "Radio Exitos (HIRL)",
+    "frequencyHz": 3365000
+   },
+   {
+    "kept": "90M-0121",
+    "held": [
+     "90M-0120"
+    ],
+    "station": "Radio Rabaul",
+    "frequencyHz": 3385000
+   },
+   {
+    "kept": "90M-0122",
+    "held": [
+     "90M-0123"
+    ],
+    "station": "Radio Rabaul",
+    "frequencyHz": 3385000
+   }
+  ],
+  "flags": {
+   "low_confidence": [
+    "90M-0034: Low - station unidentified in the title (\"ID sounding like R. Populares\")",
+    "90M-0134: Low - label \"mid-late 1970s\" conflicts with the ZBC name (used from 1980); either way within 1969-1989"
+   ],
+   "audio_link_failed": [
+    "90M-0076"
+   ]
+  }
+ },
+ "49m": {
+  "merges": [
+   {
+    "kept": "49M-0042",
+    "held": [
+     "49M-0041"
+    ],
+    "station": "BBC World Service",
+    "frequencyHz": 5975000
+   },
+   {
+    "kept": "49M-0058",
+    "held": [
+     "49M-0059"
+    ],
+    "station": "Radio Tashkent",
+    "frequencyHz": 5985000
+   },
+   {
+    "kept": "49M-0168",
+    "held": [
+     "49M-0169"
+    ],
+    "station": "HCJB (Voice of the Andes)",
+    "frequencyHz": 6095000
+   },
+   {
+    "kept": "49M-0170",
+    "held": [
+     "49M-0171"
+    ],
+    "station": "HCJB (Voice of the Andes)",
+    "frequencyHz": 6095000
+   },
+   {
+    "kept": "49M-0220",
+    "held": [
+     "49M-0221"
+    ],
+    "station": "Voice of Biafra (Radio Biafra)",
+    "frequencyHz": 6145000
+   },
+   {
+    "kept": "49M-0293",
+    "held": [
+     "49M-0294"
+    ],
+    "station": "Radio Liberacion (Sistema Radial de la Resistencia Nicaraguense)",
+    "frequencyHz": 5929300
+   },
+   {
+    "kept": "49M-0301",
+    "held": [
+     "49M-0303",
+     "49M-0302"
+    ],
+    "station": "Radio Difusora Nacional de Nicaragua",
+    "frequencyHz": 5945000
+   }
+  ],
+  "flags": {
+   "frequency_snapped": [
+    "49M-0011: 5953.45 -> 5953.4",
+    "49M-0029: 5964.74 -> 5964.7",
+    "49M-0115: 6035.19 -> 6035.2",
+    "49M-0145: 6071.26 -> 6071.3",
+    "49M-0159: 6088.58 -> 6088.6",
+    "49M-0186: 6105.04 -> 6105.0",
+    "49M-0214: 6139.55 -> 6139.6",
+    "49M-0318: 6218.02 -> 6218.0",
+    "49M-0334: 6261.12 -> 6261.1",
+    "49M-0335: 6261.13 -> 6261.1",
+    "49M-0339: 6280.07 -> 6280.1"
+   ],
+   "low_confidence": [
+    "49M-0079: Low - \"Frequency: 6.010MHz\" field but text says \"my QSL has them on 6.010 MHz\", so may be the QSL frequency",
+    "49M-0291: Low - station unidentified in the title",
+    "49M-0307: Low - ship in international waters; licensed status unclear",
+    "49M-0348: Low - station unidentified in the title"
+   ],
+   "frequency_override": [
+    "49M-0319"
+   ]
+  }
+ }
+}

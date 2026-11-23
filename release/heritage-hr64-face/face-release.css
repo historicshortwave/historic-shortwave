@@ -1,0 +1,85 @@
+/* Historic Shortwave new face (Phase 5c): styles for the live release content that the mockup showed only as samples
+   (reveal panel and map, recording credit, research links, band guide, recordings at this frequency, catalog line). */
+:root{--color-surface:var(--surface);--color-border:var(--border);--color-bg:var(--bg);--color-text:var(--fg);--color-text-muted:var(--fg-muted);
+  --color-primary:var(--primary);--color-primary-hover:var(--primary-hover);
+  --space-1:.25rem;--space-2:.5rem;--space-3:.75rem;--space-4:1rem;--space-5:1.25rem;--space-6:1.5rem;--space-8:2rem}
+.sr-only{position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+.face-compat{display:none!important}
+.catalog-line{margin-top:var(--space-3);font:500 var(--text-xs) var(--font-mono);color:var(--fg-muted)}
+
+/* reveal panel (live) */
+.reveal-panel{background:var(--surface);padding:var(--space-4);margin-top:var(--space-3);border:1px solid var(--border);font-size:var(--text-sm);display:block}
+.reveal-panel[hidden]{display:none}
+.reveal-panel h3{font-size:var(--text-base);font-weight:600}
+.reveal-panel p{margin-top:var(--space-2);font-size:var(--text-xs)}
+.reveal-panel a{color:var(--primary);display:inline-block;min-height:44px;padding-top:var(--space-3);margin-right:var(--space-4)}
+.reveal-panel .recording-credit{margin-top:var(--space-1);color:var(--fg-muted);font-size:inherit;line-height:inherit}
+.reveal-panel .recording-credit a{display:inline;min-height:0;padding:0;margin:0;color:inherit;text-decoration:underline;text-underline-offset:2px}
+.reveal-panel .recording-credit.is-pending{opacity:.7}
+.nowrap{white-space:nowrap}
+
+/* period-border map (reveal-map.js) */
+.reveal-panel .reveal-map,.reveal-map{display:flex;gap:var(--space-4);align-items:center;margin:var(--space-3) 0 var(--space-2);padding:var(--space-3);border:1px solid var(--border);background:var(--bg);border-radius:4px;
+  min-height:0;text-align:left;font:inherit;color:inherit;letter-spacing:0;aspect-ratio:auto;border-style:solid;flex-direction:row;justify-content:flex-start;max-width:none;
+  --map-ocean:#d6e0dc;--map-land:#c3c8b8;--map-edge:#f4f2ea;--map-grid:#28302c14;--map-hl:#b8652f;--map-hl-edge:#5a2c0e}
+.reveal-map .map-svg{flex:0 0 auto;width:200px;height:200px;max-width:100%}
+.map-ocean{fill:var(--map-ocean)}.map-graticule{fill:none;stroke:var(--map-grid);stroke-width:.6}
+.map-land{fill:var(--map-land);stroke:var(--map-edge);stroke-width:.5;stroke-linejoin:round}
+.map-highlight{fill:var(--map-hl);stroke:var(--map-hl-edge);stroke-width:.8;stroke-linejoin:round}
+.map-ring{fill:none;stroke:var(--map-hl);stroke-width:2.2}
+.reveal-map figcaption{display:flex;flex-direction:column;gap:var(--space-1);min-width:0}
+.map-caption-main{font-size:var(--text-sm);font-weight:600;color:var(--fg)}
+.map-caption-line{font-size:var(--text-xs);color:var(--fg-muted)}
+.map-credit{font-size:11px;color:var(--fg-muted);margin-top:var(--space-2)}
+.reveal-map .map-status{margin:0;font-size:var(--text-xs);color:var(--fg-muted)}
+.reveal-map .map-credit a{display:inline;min-height:0;padding:0;margin:0;color:inherit;text-decoration:underline;text-underline-offset:2px}
+.map-credits-button{font:inherit;color:inherit;text-decoration:underline;text-underline-offset:2px;padding:0;background:none;border:0;cursor:pointer;min-height:0}
+@media (max-width:560px){.reveal-panel .reveal-map,.reveal-map{flex-direction:column;align-items:flex-start}.reveal-map .map-svg{width:220px;height:220px;align-self:center}}
+
+/* research links (live links, styled like the mockup's sample tiles) */
+.research-buttons a{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:44px;border:1px solid var(--border);border-radius:3px;padding:10px 12px;font-size:12px;color:var(--primary);text-decoration:none;background:var(--surface)}
+.research-buttons a:hover{border-color:var(--primary)}
+.research-buttons a span{color:var(--fg-muted);font-size:12px}
+
+/* band guide */
+.band-guide{margin-top:var(--space-5);border-top:1px solid var(--border)}
+.band-guide summary{cursor:pointer;min-height:44px;padding-top:var(--space-3);font-size:var(--text-sm)}
+.band-guide summary span{float:right;color:var(--fg-muted);font-size:var(--text-xs)}
+.band-guide>p{font-size:var(--text-xs);color:var(--fg-muted);padding:var(--space-2) 0}
+.guide-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-2);margin-top:var(--space-2)}
+.guide-grid button{border:1px solid var(--border);padding:var(--space-2);font-family:var(--font-mono);font-size:var(--text-sm);text-align:left;min-height:58px;border-radius:2px;background:var(--surface);min-width:0;overflow-wrap:anywhere}
+.guide-grid button span{display:block;font-size:var(--text-xs);color:var(--fg-muted);font-family:var(--font-body)}
+.guide-grid button.current{border-color:var(--primary);color:var(--primary)}
+.guide-grid button:hover:not(:disabled){border-color:var(--primary)}
+@media (max-width:720px){.guide-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* recordings at this frequency (decision 5: on the listening desk; shown only where two or more recordings share a frequency) */
+.alternates[hidden]{display:none}
+.alternates-head label{font:inherit;color:inherit}
+.alternates-head #alternative-count{color:var(--primary)}
+
+/* footer reset link */
+.site-footer button{text-decoration:underline;min-height:44px;font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+
+/* the concealed note shows until the station is revealed */
+.reveal-panel:not([hidden]) ~ .reveal-concealed{display:none}
+/* Phone layout (Bill, 2026-11-19): the recording picker was squeezed beside "Previous recording" and its label was cut off.
+   On narrow screens it takes its own full-width row, with Previous and Next sharing the row below. */
+@media (max-width:560px){
+  .alternates-actions select{order:-1;flex:1 1 100%;min-width:0;width:100%}
+  .alternates-actions{align-items:stretch}
+  .alternates-actions button{flex:1 1 0;padding:.45rem .5rem;line-height:1.2}
+  .alternates-head #alternative-count{white-space:nowrap}
+}
+/* Very narrow phones (iPhone SE and similar): a little less side padding so the longest shortened label fits. */
+@media (max-width:400px){
+  .alternates{padding-left:.6rem;padding-right:.6rem}
+  .alternates-actions select{padding-left:.3rem;padding-right:.2rem}
+}
+
+/* Accessibility draft 2026-11-20 (issue 6): the tuning hint and the About, Field notes and Reset Session links under the
+   receiver measured about 3.5:1 against the desk shadow (4.5:1 is the WCAG AA minimum for this size). They use the main
+   text colour instead of the muted one; size, font and underline are unchanged. */
+.under-scene .hint,.under-scene .links button{color:var(--fg)}
+/* Issue 1: the station heading takes focus after Reveal; no ring when a mouse or tap revealed it. */
+.reveal-panel h3:focus:not(:focus-visible){outline:none}

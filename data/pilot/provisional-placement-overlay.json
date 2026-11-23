@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.1",
+  "generated_at_utc": "2026-10-20T15:38:55.913810+00:00",
+  "workbook_file": "60m_SWBC_recordings_1960-1989.xlsx",
+  "workbook_sha256": "577b424304166bd0d3292061ce218c64794a03cb883a7061eb86f9f1c67771ee",
+  "recording_year_scope": {
+    "from": 1960,
+    "to": 1989,
+    "complete_year_coverage_claimed": false
+  },
+  "band_scope": {
+    "core_hz": [
+      4750000,
+      5060000
+    ],
+    "proposed_extended_interface_hz": [
+      4700000,
+      5085000
+    ]
+  },
+  "visibility": "private_curator_staging",
+  "enabled_by_default": false,
+  "required_user_action": "Include provisional reconstructions",
+  "placements": [
+    {
+      "recording_id": "rec-000349",
+      "inventory_id": 349,
+      "carrier_hz": 4770000,
+      "carrier_basis": "historical_channel_documented_but_unverified_for_clip",
+      "receiver_placement_gmt": "0600",
+      "approximate": true,
+      "time_basis": "owner_approved_provisional_receiver_placement",
+      "confirmed_recording_start_gmt": null,
+      "calculated_broadcast_gmt_enabled": false,
+      "count_in_qualified_totals": false,
+      "publish_eligible": false,
+      "rights_access_review": "pending",
+      "media_review": "pending",
+      "pre_reveal_disclosure": {
+        "frequency": "Provisional placement: 4770 kHz",
+        "date": "Recording year: 1971",
+        "recording_time": "Recording GMT: not documented",
+        "receiver_time": "Approximate receiver placement: 0600 GMT"
+      },
+      "evidence_urls": [
+        "https://archive.org/details/elwa-monrovia-liberia-1970",
+        "https://www.worldradiohistory.com/Archive-DX/NASWA/70s/FRENDX-1973-12.pdf",
+        "https://www.worldradiohistory.com/Archive-Speedx/70s/Speedx-1974-02.pdf"
+      ]
+    }
+  ]
+}

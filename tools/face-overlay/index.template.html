@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  {{CSP}}
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#efece4">
+  {{DESCRIPTION}}
+  {{TITLE}}
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./vendor/fonts/fonts.css">
+  <link rel="stylesheet" href="./vendor/fonts/barlow.css">
+  <link rel="stylesheet" href="./face.css">
+  <link rel="stylesheet" href="./site.css">
+  <link rel="stylesheet" href="./face-release.css">
+  <script src="./catalog.js" defer></script>
+  <script src="./seasonal-noise.js" defer></script>
+  <script src="./reveal-map.js" defer></script>
+  <script src="./face.js" defer></script>
+  <script src="./app.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#stage">Skip to receiver</a>
+{{HEADER}}
+
+<main class="page">
+  <section class="intro">
+    <div>
+      {{INTRO}}
+      <p id="catalog-status" class="catalog-line" role="status" data-testid="status-catalog">Loading recordings…</p>
+    </div>
+    <div class="intro-note"><span class="live-dot"></span><div>ARCHIVAL AUDIO</div></div>
+  </section>
+
+  <section class="stage" id="stage" aria-label="Receiver on a listening desk">
+   <div class="scale"><div class="world" id="world">
+    <div class="desk" aria-hidden="true"><i class="pool"></i><i class="rxshadow"></i><i class="spill"></i></div>
+    <div class="box">
+     <div class="face top" aria-hidden="true"><i class="vents"></i><i class="ts a"></i><i class="ts b"></i></div>
+     <div class="face side" aria-hidden="true"></div>
+     <section id="receiver" class="rx" aria-label="Historic Shortwave receiver">
+      <div class="panel">
+        <i class="screw tl" aria-hidden="true"></i><i class="screw tr" aria-hidden="true"></i>
+        <i class="screw bl" aria-hidden="true"></i><i class="screw br" aria-hidden="true"></i>
+        <div class="top">
+          <div class="window dialwin"><i class="bs" aria-hidden="true"></i><i class="bs" aria-hidden="true"></i><i class="bs" aria-hidden="true"></i><i class="bs" aria-hidden="true"></i><div class="well"><canvas id="dial" aria-hidden="true"></canvas></div></div>
+          <div class="window meterwin"><i class="bs" aria-hidden="true"></i><i class="bs" aria-hidden="true"></i><i class="bs" aria-hidden="true"></i><i class="bs" aria-hidden="true"></i><div class="well"><canvas id="meter" aria-hidden="true"></canvas></div></div>
+        </div>
+        <div class="bottom">
+          <div class="group">
+            <div class="ctl">
+              <canvas id="gain-knob" class="knob" width="140" height="140" role="slider" tabindex="0" aria-label="Audio gain" aria-valuemin="0" aria-valuemax="100" aria-valuenow="45" aria-valuetext="45 percent" data-testid="knob-gain"></canvas>
+              <span class="eng" aria-hidden="true">AF GAIN</span>
+            </div>
+            <div class="ctl">
+              <div class="powerrow">
+                <button id="power-button" class="toggle" role="switch" aria-checked="false" aria-label="Receiver power" data-testid="button-power">
+                  <span class="eng sm hi" aria-hidden="true">ON</span><span class="nut" aria-hidden="true"></span><span class="bat" aria-hidden="true"></span><span class="eng sm lo" aria-hidden="true">OFF</span>
+                </button>
+                <span class="jewel" aria-hidden="true"></span>
+              </div>
+              <span class="eng" aria-hidden="true">POWER</span>
+            </div>
+            <div class="ctl mid">
+              <div class="nameplate" role="img" aria-label="Nameplate: Receiver, Radio. Historic Shortwave. Archival recordings 1969 to 1989. 90, 60 and 49 meter broadcast bands." data-testid="nameplate">
+                <i></i><i></i><i></i><i></i>
+                <span>RECEIVER, RADIO</span><b>HISTORIC SHORTWAVE</b>
+                <span class="s">ARCHIVAL RECORDINGS 1969-1989</span><span class="s">90 · 60 · 49 METER BROADCAST BANDS</span>
+              </div>
+              <div class="counter" id="counter" aria-hidden="true">
+                <div class="drum"><div class="strip"></div></div><div class="drum"><div class="strip"></div></div>
+                <div class="drum"><div class="strip"></div></div><div class="drum"><div class="strip"></div></div>
+                <span class="dot"></span><div class="drum tenth"><div class="strip"></div></div>
+              </div>
+              <span class="eng" aria-hidden="true">KILOCYCLES</span>
+              <output id="frequency-readout" class="sr" aria-live="off" data-testid="text-frequency">4900.0</output>
+            </div>
+            <div class="ctl">
+              <canvas id="band-knob" class="knob" width="150" height="150" role="slider" tabindex="0" aria-labelledby="band-label" aria-valuemin="1" aria-valuemax="3" aria-valuenow="2" aria-valuetext="60 meter band, 4700 to 5085 kilocycles" data-testid="knob-band"></canvas>
+              <span class="eng" id="band-label" aria-hidden="true">BAND</span>
+            </div>
+          </div>
+          <div class="ctl tunecol">
+            <canvas id="tuning-knob" class="knob" width="180" height="180" role="slider" tabindex="0" aria-labelledby="tuning-label" aria-valuemin="4700" aria-valuemax="5085" aria-valuenow="4900" aria-valuetext="4900.0 kilocycles" data-testid="knob-tuning"></canvas>
+            <span class="eng" id="tuning-label" aria-hidden="true">MAIN TUNING</span>
+          </div>
+        </div>
+      </div>
+     </section>
+    </div>
+   </div></div>
+   <div class="vignette" aria-hidden="true"></div>
+  </section>
+  <p class="sr">Receiver status: <span id="receiver-status" data-testid="status-receiver">STANDBY</span></p>
+  <span id="status-announcement" class="sr-only" aria-live="polite"></span>
+  <span id="band-announcement" class="sr-only" aria-live="polite"></span>
+
+  <nav class="under-scene" aria-label="Receiver links">
+    <span class="hint"><span aria-hidden="true">Turn slowly to fine-tune, faster to cross the band · Arrows 0.1 KC · Page keys 5 KC</span><span class="sr-only">Turn slowly to fine-tune, faster to cross the band. Arrow keys tune 0.1 kilocycles. Page Up and Page Down tune 5 kilocycles.</span></span>
+    <span class="links">
+      <button type="button" id="about-project-button" data-testid="nav-about-project">About</button>
+      <button type="button" id="about-button" data-testid="nav-about">Field notes</button>
+      <button type="button" id="new-session" data-testid="button-new-session">Reset Session</button>
+    </span>
+  </nav>
+
+  <details class="alt-controls">
+    <summary data-testid="toggle-accessible-tuning">Alternative controls</summary>
+    <div class="alt-grid">
+      <div class="alt-steps"><span class="alt-label">Tune</span><button type="button" id="tune-minus" class="tune-step" aria-label="Tune lower" data-testid="button-tune-lower">−</button><button type="button" id="tune-plus" class="tune-step" aria-label="Tune higher" data-testid="button-tune-higher">+</button></div>
+      <label class="alt-field">Band
+        <select id="band-select" data-testid="select-band"><option value="90m" aria-label="90 meters, 3150 to 3500 kilocycles">90 meters · 3150–3500 KC</option><option value="60m" selected aria-label="60 meters, 4700 to 5085 kilocycles">60 meters · 4700–5085 KC</option><option value="49m" aria-label="49 meters, 5850 to 6350 kilocycles">49 meters · 5850–6350 KC</option></select>
+      </label>
+      <label class="alt-field">Audio gain <input id="gain-input" type="range" min="0" max="100" value="45" data-testid="slider-gain"></label>
+      <label class="alt-field wide">Full-band tuning <input id="band-slider" type="range" min="4700" max="5085" step="0.1" value="4900" data-testid="slider-frequency">
+        <span class="edges band-edges" aria-hidden="true"><span>4700 KC</span><span>5085 KC</span></span></label>
+    </div>
+  </details>
+
+  <section class="context-strip" aria-label="Original recording context">
+    <div><span>RECORDING DATE</span><strong id="recording-date" data-testid="text-date">Loading catalog…</strong></div>
+    <div><span>REPORTED GMT</span><strong id="recording-time" data-testid="text-gmt">Not documented</strong></div>
+    <div><span>PLAYBACK ELAPSED</span><strong id="elapsed" data-testid="text-elapsed">00:00</strong></div>
+    <div class="clip-context"><span id="clip-id" data-testid="text-clip">AUDIO CLIP</span><strong id="context-status">Station not revealed</strong></div>
+  </section>
+
+  <section class="workbench">
+    <div class="listening-panel">
+      <div class="section-title"><p class="eyebrow">01 / LISTENING DESK</p><span id="scope-label" class="scope-label">60 METER COLLECTION</span></div>
+      <h2 id="listening-title" data-testid="text-listening-title">An identification is waiting.</h2>
+      <p id="listening-description">Switch the receiver on, tune slowly, and listen for a voice identification.</p>
+      <div class="playback-actions">
+        <button type="button" class="text-button" id="play-button" data-testid="button-play">Play recording</button>
+        <button type="button" class="text-button" id="restart-button" data-testid="button-restart">Restart</button>
+        <button type="button" class="text-button loop-button" id="loop-button" aria-pressed="false" data-testid="button-loop">Loop recording <span class="loop-state" aria-hidden="true">OFF</span></button>
+      </div>
+      <div class="seek-row"><label for="seek-input" class="sr">Recording playback position</label><input id="seek-input" type="range" min="0" max="100" step="0.1" value="0" disabled data-testid="slider-seek"><span id="duration">--:--</span></div>
+      <div id="alternate-controls" class="alternates" hidden role="group" aria-label="Recordings at this frequency" data-testid="panel-alternatives">
+        <div class="alternates-head"><label for="recording-select">RECORDINGS AT THIS FREQUENCY</label><span id="alternative-count" role="status" data-testid="text-alternative-count"></span></div>
+        <div class="alternates-actions"><button type="button" id="previous-recording" data-testid="button-previous-recording">Previous recording</button><select id="recording-select" data-testid="select-recording"></select><button type="button" id="next-recording" data-testid="button-next-recording">Next recording</button></div>
+      </div>
+    </div>
+    <div class="desk-side">
+      <div class="reveal-row"><button type="button" id="reveal-button" class="reveal-button" data-testid="button-reveal"><i class="reveal-lamp" aria-hidden="true"></i>Reveal station <span aria-hidden="true">↗</span></button></div>
+      <div id="reveal-panel" class="reveal-panel" hidden></div>
+      <div class="reveal-concealed" id="reveal-concealed"><p class="eyebrow">STATION CONCEALED</p><p>The station name, location and recording credit appear here, with the period-border map, after you reveal it.</p></div>
+      {{RESEARCH}}
+      <details id="band-guide" class="band-guide"><summary data-testid="toggle-band-guide">Band guide <span id="guide-count"></span></summary><p>Frequencies and neutral clip IDs only. At a shared frequency, use Recordings at this frequency on the listening desk to choose a recording.</p><div id="guide-grid" class="guide-grid"></div></details>
+    </div>
+  </section>
+
+  <section class="static-preference" aria-label="Listening preferences"><div><h2>Between-station static</h2><p id="static-description">On by default. Turn the receiver on to hear seasonal noise between recordings.</p></div><div class="static-switch-wrap"><button type="button" id="static-button" class="small-switch" role="switch" aria-checked="true" aria-label="Between-station static" aria-describedby="static-description" data-testid="button-static"><span></span></button><span id="static-output">On</span></div></section>
+
+  <footer class="site-footer"><p>{{FOOTER_TEXT}}</p><span id="footer-mode">HISTORIC SHORTWAVE</span></footer>
+
+  <div class="face-compat" hidden aria-hidden="true">
+    <div class="dial-top"><span>60 METERS</span><span>4.700–5.085 Mc/s</span></div><div class="dial-bottom"><span>4700 KC</span><span>5085 KC</span></div>
+    <canvas id="band-canvas"></canvas><canvas id="meter-canvas"></canvas>
+    <span id="signal-lamp"></span><span id="power-off"></span><span id="power-label"></span>
+    <output id="band-output">60 M</output><output id="gain-output">45%</output>
+    <div id="digital-window"><span id="signal-legend" hidden>SIGNAL</span></div>
+    <button type="button" id="step-fine" tabindex="-1">FINE</button><button type="button" id="step-coarse" tabindex="-1">COARSE</button>
+  </div>
+</main>
+{{DIALOGS}}
+</body>
+</html>

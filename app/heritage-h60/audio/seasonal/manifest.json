@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 1,
+  "loopSeconds": 75,
+  "sampleRate": 16000,
+  "format": "mono MP3; decoded gapless buffer loop",
+  "dateBasis": "America/New_York",
+  "levelsDb": {
+    "winter": 0,
+    "spring": 1,
+    "summer": 2,
+    "autumn": 1
+  },
+  "crashesPerMinute": {
+    "winter": 1,
+    "spring": 10,
+    "summer": 20,
+    "autumn": 10
+  },
+  "seasonBeds": {
+    "winter": "winter",
+    "spring": "autumn",
+    "summer": "summer",
+    "autumn": "autumn"
+  },
+  "credit": "J. Christie (Internet Archive uploader zardoz12) / NA5B WebSDR, Washington, DC",
+  "rightsLabel": "Noise-only tails from uploads marked Public Domain Mark 1.0; not broadcast program excerpts",
+  "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+  "beds": {
+    "winter": {
+      "file": "winter-bed.mp3",
+      "durationSeconds": 75.0,
+      "rms": 0.11431533200508948,
+      "peak": 0.6247059106826782,
+      "bytes": 601100,
+      "seamStep": 0.08417761325836182,
+      "ordinaryStepP999": 0.5419866984784665,
+      "normalizationGain": 1.0497279577043737,
+      "sourcePage": "https://archive.org/details/wtww.-bob-biermann-and-glenn-hauser.-fri.-2025-12-06-t-04-51-00-z-5085.0k-hz",
+      "sourceFile": "WTWW. Bob biermann and Glenn Hauser. Fri. 2025-12-06T04_51_00Z_5085.0kHz.mp3",
+      "sourceOffsetSeconds": 5700,
+      "inputSeconds": 78,
+      "crossfadeSeconds": 3,
+      "recordingDateLabel": "2025-12-06 UTC",
+      "frequencyKHz": 5085,
+      "deBuzz": {
+        "method": "59.94 Hz harmonic comb through 5 kHz; 3 Hz-wide zero-phase narrow notches",
+        "harmonicEnergyFractionBefore": 0.02853465699121979,
+        "harmonicEnergyFractionAfter": 0.0008681533998238629,
+        "harmonicSuppressionDb": -15.16776186008465
+      }
+    },
+    "summer": {
+      "file": "summer-bed.mp3",
+      "durationSeconds": 75.0,
+      "rms": 0.11236399273591602,
+      "peak": 0.7027856111526489,
+      "bytes": 601100,
+      "seamStep": 0.04663149919360876,
+      "ordinaryStepP999": 0.5622653400525486,
+      "normalizationGain": 1.0679577779158358,
+      "sourcePage": "https://archive.org/details/wrmi-muffled-audio.-glenn-hauser-then-signoff.-2026-08-22-t-03-40-08-z-5085.0k-hz",
+      "sourceFile": "WRMI, muffled audio. Glenn Hauser then signoff. 2026-08-22T03_40_08Z_5085.0kHz.mp3",
+      "sourceOffsetSeconds": 1200,
+      "inputSeconds": 78,
+      "crossfadeSeconds": 3,
+      "recordingDateLabel": "2026-08-22 UTC",
+      "frequencyKHz": 5085
+    },
+    "autumn": {
+      "file": "autumn-bed.mp3",
+      "durationSeconds": 75.0,
+      "rms": 0.11305937171677521,
+      "peak": 0.703579843044281,
+      "bytes": 601100,
+      "seamStep": 0.0009654015302658081,
+      "ordinaryStepP999": 0.6459757083952519,
+      "normalizationGain": 1.0613892345042544,
+      "sourcePage": "https://archive.org/details/wbcq.-auto-recording-so-there-is-dead-air-at-the-end.-sun.-2025-11-10-t-04-36-43-z-5130.0k-hz",
+      "sourceFile": "WBCQ. Auto recording so there is dead air at the end. Sun. 2025-11-10T04_36_43Z_5130.0kHz.mp3",
+      "sourceOffsetSeconds": 5400,
+      "inputSeconds": 78,
+      "crossfadeSeconds": 3,
+      "recordingDateLabel": "2025-11-10 UTC",
+      "frequencyKHz": 5130
+    }
+  },
+  "crashes": [
+    {
+      "file": "summer-crash-1.mp3",
+      "durationSeconds": 0.9,
+      "rms": 0.08590619164263834,
+      "peak": 0.6151655316352844,
+      "bytes": 8108,
+      "seamStep": 0.003121280431514606,
+      "ordinaryStepP999": 0.4436813254952505,
+      "sourcePage": "https://archive.org/details/wrmi-muffled-audio.-glenn-hauser-then-signoff.-2026-08-22-t-03-40-08-z-5085.0k-hz",
+      "sourceOffsetSeconds": 1263.8905625
+    },
+    {
+      "file": "summer-crash-2.mp3",
+      "durationSeconds": 0.9,
+      "rms": 0.08215611358042091,
+      "peak": 0.601749062538147,
+      "bytes": 8108,
+      "seamStep": 9.470779332332313e-05,
+      "ordinaryStepP999": 0.46924224345386806,
+      "sourcePage": "https://archive.org/details/wrmi-muffled-audio.-glenn-hauser-then-signoff.-2026-08-22-t-03-40-08-z-5085.0k-hz",
+      "sourceOffsetSeconds": 1202.2751875
+    },
+    {
+      "file": "summer-crash-3.mp3",
+      "durationSeconds": 0.9,
+      "rms": 0.08580269082369026,
+      "peak": 0.6294443607330322,
+      "bytes": 8108,
+      "seamStep": 0.010723233528551646,
+      "ordinaryStepP999": 0.4665527236238132,
+      "sourcePage": "https://archive.org/details/wrmi-muffled-audio.-glenn-hauser-then-signoff.-2026-08-22-t-03-40-08-z-5085.0k-hz",
+      "sourceOffsetSeconds": 1227.76425
+    },
+    {
+      "file": "autumn-crash-1.mp3",
+      "durationSeconds": 0.9,
+      "rms": 0.07248101575861804,
+      "peak": 0.6171655654907227,
+      "bytes": 8108,
+      "seamStep": 0.002440068594296463,
+      "ordinaryStepP999": 0.48788739419728966,
+      "sourcePage": "https://archive.org/details/wbcq.-auto-recording-so-there-is-dead-air-at-the-end.-sun.-2025-11-10-t-04-36-43-z-5130.0k-hz",
+      "sourceOffsetSeconds": 5453.7449375
+    },
+    {
+      "file": "autumn-crash-2.mp3",
+      "durationSeconds": 0.9,
+      "rms": 0.0656200780170057,
+      "peak": 0.6131603121757507,
+      "bytes": 8108,
+      "seamStep": 0.000265538772509899,
+      "ordinaryStepP999": 0.5491157262027391,
+      "sourcePage": "https://archive.org/details/wbcq.-auto-recording-so-there-is-dead-air-at-the-end.-sun.-2025-11-10-t-04-36-43-z-5130.0k-hz",
+      "sourceOffsetSeconds": 5426.6935
+    },
+    {
+      "file": "autumn-crash-3.mp3",
+      "durationSeconds": 0.9,
+      "rms": 0.07549121307647626,
+      "peak": 0.6085191965103149,
+      "bytes": 8108,
+      "seamStep": 0.003950030368287116,
+      "ordinaryStepP999": 0.46949086253345335,
+      "sourcePage": "https://archive.org/details/wbcq.-auto-recording-so-there-is-dead-air-at-the-end.-sun.-2025-11-10-t-04-36-43-z-5130.0k-hz",
+      "sourceOffsetSeconds": 5467.8814375
+    }
+  ]
+}

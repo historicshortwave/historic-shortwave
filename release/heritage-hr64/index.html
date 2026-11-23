@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <!-- Content Security Policy (added 2026-10-21). Keep media-src in step with APPROVED_AUDIO_HOSTS in app.js. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self'; media-src https://archive.org https://*.archive.org; base-uri 'none'; form-action 'none'; object-src 'none'">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#242827">
+  <meta name="description" content="Tune a historical shortwave receiver across the 90, 60 and 49 meter bands, 1960-1989. Listen for an identification, then reveal the station to confirm the station ID and its location.">
+  <title>Historic Shortwave | Archive Receiver</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link href="./vendor/fonts/fonts.css" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./faceplate-grey.css">
+  <script src="./catalog.js" defer></script>
+  <script src="./seasonal-noise.js" defer></script>
+  <script src="./reveal-map.js" defer></script>
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#receiver">Skip to receiver</a>
+  <header class="site-header">
+    <a href="./" class="wordmark" aria-label="Historic Shortwave home">
+      <svg viewBox="0 0 40 40" width="36" height="36" fill="none" aria-label="Historic Shortwave emblem" role="img"><path d="M5 31h30M9 26V15h22v11M12 19h16M17 25h6M20 15V7M14 5l6 4 6-4" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="25" r="1" fill="currentColor"/><circle cx="28" cy="25" r="1" fill="currentColor"/></svg>
+      <span class="site-title">A Simulated Shortwave Receiver presenting Archival Audio Recordings<small>THE HISTORICAL LISTENING ROOM</small></span>
+    </a>
+    <nav aria-label="Main navigation">
+      <button id="go-receiver" class="nav-active" data-testid="nav-receiver">Receiver</button>
+      <button id="about-project-button" data-testid="nav-about-project">About</button>
+      <button id="about-button" data-testid="nav-about">Field notes</button>
+      <button id="theme-button" class="theme-button" aria-label="Switch desk lighting" data-testid="toggle-theme">Night desk</button>
+    </nav>
+  </header>
+  <main>
+    <section class="intro">
+      <div><p class="eyebrow">90 · 60 · 49 METERS <span>/</span> 1960-1989 COLLECTION</p><h1>The band is open.</h1><p id="intro-description">Historical recordings at their original frequencies. Tune the band, listen for an identification, then reveal the station to confirm the station ID and its location.</p></div>
+      <div class="intro-note"><span class="live-dot"></span><div>ARCHIVAL AUDIO</div></div>
+    </section>
+    <section class="catalog-tools" aria-label="Recordings on this band">
+            <p id="catalog-status" role="status" data-testid="status-catalog">Loading recordings…</p>
+    </section>
+    <section id="receiver" class="receiver" aria-label="Historic Shortwave receiver">
+      <div class="receiver-brand">
+        <div class="brand-name">
+          <div class="nameplate" role="img" aria-label="Nameplate: Receiver, Radio. Historic Shortwave. Archival recordings 1960 to 1989, 90, 60 and 49 meter broadcast bands." data-testid="nameplate">
+            <i class="np-screw np-tl"></i><i class="np-screw np-tr"></i><i class="np-screw np-bl"></i><i class="np-screw np-br"></i>
+            <div class="np-title">RECEIVER, RADIO</div>
+            <div class="np-name">HISTORIC SHORTWAVE</div>
+            <div class="np-line">ARCHIVAL RECORDINGS 1960-1989</div>
+            <div class="np-line">90 · 60 · 49 METER BROADCAST BANDS</div>
+          </div>
+        </div>
+        <div class="receiver-description">GENERAL COVERAGE RECEIVER<small>60 METER ARCHIVE BAND</small></div>
+      </div>
+      <div class="instrument-row">
+        <div class="speaker-group" aria-hidden="true"><div class="speaker-grille"></div></div>
+        <div class="dial-assembly">
+          <div class="dial-window"><div class="dial-top"><span>60 METERS</span><span>4.700–5.085 Mc/s</span></div><canvas id="band-canvas" aria-hidden="true"></canvas><div class="dial-bottom"><span>4700 kHz</span><span>5085 kHz</span></div></div>
+        </div>
+        <div class="meter-assembly"><div class="meter-window"><canvas id="meter-canvas" aria-hidden="true"></canvas><span class="meter-bottom">S-METER</span></div><div class="receiver-status"><span id="signal-lamp" class="signal-lamp"></span><span id="receiver-status" data-testid="status-receiver" aria-live="polite">STANDBY</span></div></div>
+      </div>
+      <div class="hardware-controls">
+        <div class="power-control"><span id="power-off" class="power-word active" data-power="off" aria-hidden="true">OFF</span><button id="power-button" class="small-switch receiver-power" role="switch" aria-checked="false" aria-label="Receiver power" data-testid="button-power"><span aria-hidden="true"></span></button><span id="power-label" class="power-word" data-power="on" aria-hidden="true">ON</span></div>
+        <div class="band-selector" data-testid="control-band"><label id="band-label">BAND</label><div class="band-switch"><button type="button" class="band-mark" data-band="90m" tabindex="-1" aria-hidden="true" data-mark-angle="-50">90</button><button type="button" class="band-mark" data-band="60m" tabindex="-1" aria-hidden="true" data-mark-angle="0">60</button><button type="button" class="band-mark" data-band="49m" tabindex="-1" aria-hidden="true" data-mark-angle="50">49</button><div id="band-knob" class="knob band-knob" role="slider" tabindex="0" aria-labelledby="band-label" aria-valuemin="1" aria-valuemax="3" aria-valuenow="2" aria-valuetext="60 meter band, 4700 to 5085 kilohertz" data-testid="knob-band"><span></span></div></div><output id="band-output">60 M</output><span id="band-announcement" class="sr-only" aria-live="polite"></span></div>
+        <div class="gain-control"><label id="gain-label">AUDIO GAIN</label><div id="gain-knob" class="knob small-knob" role="slider" tabindex="0" aria-labelledby="gain-label" aria-valuemin="0" aria-valuemax="100" aria-valuenow="45" aria-valuetext="45 percent" data-testid="knob-gain"><span></span></div><output id="gain-output">45%</output></div>
+        <div class="tuning-control"><label id="tuning-label">MAIN TUNING</label><div class="tuning-line"><div id="tuning-knob" class="knob tuning-knob" role="slider" tabindex="0" aria-labelledby="tuning-label" aria-valuemin="4700" aria-valuemax="5085" aria-valuenow="4900" aria-valuetext="4900.0 kilohertz" data-testid="knob-tuning"><span></span><i></i></div></div><div class="step-selector" aria-label="Tuning step"><button id="step-fine" aria-pressed="true" class="active" data-testid="button-fine">FINE <span>0.1 kHz</span></button><button id="step-coarse" aria-pressed="false" data-testid="button-coarse">COARSE <span>5 kHz</span></button></div></div>
+        <div class="receiver-lower" data-testid="panel-frequency">
+        <div class="digital-window" id="digital-window"><span class="signal-legend" id="signal-legend" aria-hidden="true" hidden>SIGNAL</span><label for="frequency-readout">TUNED FREQUENCY</label><div><output id="frequency-readout" class="frequency-readout" data-testid="text-frequency">4900.0</output><span>kHz</span></div></div>
+        <div class="face-band-control">
+          <label for="band-slider">FULL-BAND TUNING</label>
+          <input id="band-slider" type="range" min="4700" max="5085" step="0.1" value="4900" data-testid="slider-frequency">
+          <div class="band-edges"><span>4700 kHz</span><span>5085 kHz</span></div>
+        </div>
+        </div>
+      </div>
+      <div id="alternate-controls" class="alternate-controls" hidden aria-label="Recordings at this frequency" data-testid="panel-alternatives">
+        <div class="alternate-heading"><label for="recording-select">RECORDINGS AT THIS FREQUENCY</label><span id="alternative-count" role="status" data-testid="text-alternative-count"></span></div>
+        <div class="alternate-actions"><button id="previous-recording" data-testid="button-previous-recording">Previous recording</button><select id="recording-select" data-testid="select-recording"></select><button id="next-recording" data-testid="button-next-recording">Next recording</button></div>
+      </div>
+    </section>
+    <section class="precision-tools" aria-label="Precision tuning">
+      <p class="tuning-help">Grab a knob and turn.<br>Arrow keys: 0.1 kHz · Page keys: 5 kHz</p>
+      <details class="accessible-tuning"><summary data-testid="toggle-accessible-tuning">Alternative controls</summary><div class="accessible-steps"><button id="tune-minus" class="tune-step" aria-label="Tune lower" data-testid="button-tune-lower">−</button><button id="tune-plus" class="tune-step" aria-label="Tune higher" data-testid="button-tune-higher">+</button></div><label for="band-select">Band</label><select id="band-select" data-testid="select-band"><option value="90m">90 meters · 3150–3500 kHz</option><option value="60m" selected>60 meters · 4700–5085 kHz</option><option value="49m">49 meters · 5850–6350 kHz</option></select><label for="gain-input">Audio gain</label><input id="gain-input" type="range" min="0" max="100" value="45" data-testid="slider-gain"></details>
+    </section>
+    <section class="context-strip" aria-label="Original recording context">
+      <div><span>RECORDING DATE</span><strong id="recording-date" data-testid="text-date">Loading catalog…</strong></div>
+      <div><span>REPORTED GMT</span><strong id="recording-time" data-testid="text-gmt">Not documented</strong></div>
+      <div><span>PLAYBACK ELAPSED</span><strong id="elapsed" data-testid="text-elapsed">00:00</strong></div>
+      <div class="clip-context"><span id="clip-id" data-testid="text-clip">AUDIO CLIP</span><strong id="context-status">Station not revealed</strong></div>
+    </section>
+    <section class="workbench">
+      <div class="listening-panel">
+        <div class="section-title"><p class="eyebrow">01 / LISTENING DESK</p><span id="scope-label" class="scope-label">60 METER COLLECTION</span></div>
+        <h2 id="listening-title" data-testid="text-listening-title">An identification is waiting.</h2>
+        <p id="listening-description">Enable the receiver, tune slowly, and listen for a voice identification.</p>
+        <div class="playback-actions"><button id="play-button" class="text-button" data-testid="button-play">Play recording</button><button id="restart-button" class="text-button" data-testid="button-restart">Restart</button><button id="loop-button" class="text-button loop-button" aria-pressed="false" data-testid="button-loop">Loop recording <span class="loop-state" aria-hidden="true">OFF</span></button></div>
+        <div class="seek-row"><label for="seek-input" class="sr-only">Recording playback position</label><input id="seek-input" type="range" min="0" max="100" step="0.1" value="0" disabled data-testid="slider-seek"><span id="duration">--:--</span></div>
+        <div class="reveal-row"><button id="reveal-button" class="reveal-button" data-testid="button-reveal"><i class="reveal-lamp" aria-hidden="true"></i>Reveal station <span aria-hidden="true">↗</span></button></div>
+        <div id="reveal-panel" class="reveal-panel" hidden></div>
+        <div class="research-desk"><p class="eyebrow">RESEARCH MATERIALS</p><p>Consult the original directories and club bulletins. These may help identify a station; opening them does not reveal your selected clip.</p><div class="research-buttons"><a href="https://www.worldradiohistory.com/Archive-All-Logs-Lists-Directories/Archive-FBIS/1972/FBIS-1972-P2.pdf" target="_blank" rel="noopener noreferrer" data-testid="link-fbis">FBIS directory <span>PDF ↗</span></a><a href="https://www.worldradiohistory.com/Speedx.htm" target="_blank" rel="noopener noreferrer" data-testid="link-speedx">SPEEDX bulletins <span>1971–1995 ↗</span></a><a href="https://www.worldradiohistory.com/NASWA_Frendx.htm" target="_blank" rel="noopener noreferrer" data-testid="link-naswa">NASWA bulletins <span>Index ↗</span></a></div></div>
+        <details id="band-guide"><summary data-testid="toggle-band-guide">Band guide <span id="guide-count"></span></summary><p>Frequencies and neutral clip IDs only. At a shared frequency, use the controls on the receiver face to choose a recording.</p><div id="guide-grid" class="guide-grid"></div></details>
+      </div>
+    </section>
+    <section class="static-preference" aria-label="Listening preferences"><div><h2>Between-station static</h2><p id="static-description">On by default. Turn the receiver on to hear seasonal noise between recordings.</p></div><div class="static-switch-wrap"><button id="static-button" class="small-switch" role="switch" aria-checked="true" aria-label="Between-station static" aria-describedby="static-description" data-testid="button-static"><span></span></button><span id="static-output">On</span></div></section>
+    <footer><p>Recording times are drawn from original audio source labels, not the current clock.</p><div><span id="footer-mode">HISTORIC SHORTWAVE</span><button id="new-session" data-testid="button-new-session">Reset blind session</button></div></footer>
+  </main>
+  <dialog id="about-dialog" class="notes-dialog">
+    <div class="dialog-header"><p class="eyebrow">FIELD NOTES / HOW TO LISTEN</p><button class="close-dialog" aria-label="Close field notes" data-testid="button-close-about">×</button></div>
+    <h2>A listening room, not a time machine.</h2>
+    <p>This receiver is an original design. Its grey panel and nameplate recall military and commercial receivers of the 1950s and 1960s; it is not a product of, or endorsed by, any receiver maker. The dial and S-meter are simulated, not measured RF reception.</p>
+    <p>The BAND switch selects 90 meters (3150–3500 kHz), 60 meters (4700–5085 kHz) or 49 meters (5850–6350 kHz). Each range includes that collection's band-edge recordings; this does not redefine historical frequency allocations. Turn the BAND knob to a detent or tap a band number. Each band remembers where you last tuned. Grab and rotate the gain or tuning knob clockwise to increase its value. Fine tuning travels 12 kHz per revolution; coarse tuning travels 120 kHz. Arrow keys and the FINE step retain 0.1 kHz precision. Gain has bounded stops. Slider alternatives are available below the face.</p>
+    <p>The receiver holds 550 recordings from 1960-1989: 84 on 90 meters, 302 on 60 meters and 164 on 49 meters. Shared frequencies use fixed clip-ID order and neutral date/clip selectors on the receiver face.</p>
+    <p>Playing recordings: Play recording starts the tuned recording, and Restart plays it again from the beginning. Playback never advances to another recording on its own, whether a recording ends or fails to load. Loop recording, next to Restart, is off by default; its OFF/ON tag shows the setting. When it is on, the current recording starts again from the beginning each time it ends, and the line under the station title notes that Loop is on. Turning Loop on after a recording has ended does not start playback; press Replay recording. Turning it off during playback lets the recording finish its current pass and stop. Loop never moves to another recording and does not retry a recording that failed to load. The setting carries over as you tune to other recordings, and stays on until you turn it off or start a new blind session.</p>
+    <p>Static defaults to on and is controlled below the listening desk. Recorded 75-second beds and randomly timed recorded crashes follow today's date in America/New_York: December–February winter, March–May spring, June–August summer, September–November autumn. Winter is the baseline, spring/autumn are +1 dB, and summer is +2 dB. Spring temporarily uses autumn's bed and crash profile. The winter bed has mains-harmonic buzz reduction. These are seasonal impressions, not live weather or measured RF conditions.</p>
+    <p>Static is gentler during loading/buffering and fades completely out during archive playback. The recorded noise assets are bundled here; station recordings remain externally hosted. Band conditions run in the background and are not shown on the receiver face.</p>
+    <p>Noise recording credit: J. Christie / NA5B WebSDR, Washington, DC. Noise-only tails were cut from <a href="https://archive.org/details/wtww.-bob-biermann-and-glenn-hauser.-fri.-2025-12-06-t-04-51-00-z-5085.0k-hz" target="_blank" rel="noopener noreferrer">winter</a>, <a href="https://archive.org/details/wrmi-muffled-audio.-glenn-hauser-then-signoff.-2026-08-22-t-03-40-08-z-5085.0k-hz" target="_blank" rel="noopener noreferrer">summer</a>, and <a href="https://archive.org/details/wbcq.-auto-recording-so-there-is-dead-air-at-the-end.-sun.-2025-11-10-t-04-36-43-z-5130.0k-hz" target="_blank" rel="noopener noreferrer">autumn uploads</a> marked <a href="https://creativecommons.org/publicdomain/mark/1.0/" target="_blank" rel="noopener noreferrer">Public Domain Mark 1.0</a> by the uploader. This label is not a blanket rights clearance for broadcast recordings.</p>
+    <p>Station names stay concealed until revealed. After a reveal, a small map highlights the transmitter's country, republic or region as its borders stood on the recording date (borders: CShapes 2.0, Schvitz et al., CC BY-NC-SA 4.0; small areas: Natural Earth). Map data is not downloaded until the first reveal. The receiver has no text boxes and keeps no log; it reads only the knobs, switches, buttons and lists on the page, and the season comes only from the date. Research buttons open the owner's original external destinations; no documents are mirrored or embedded here.</p>
+    <p id="recording-credits">Recording credits: after you reveal a station, the line under its details names the person who made or shared the recording, using the source's own wording. "Recorded by" means the source names that person as the recordist. "Shared by" means the source says only that they contributed it. Where the source names no one, the line says so; names are never guessed. The line also gives the archive the recording comes from and, where the archive grants one, its license. The broadcasts themselves belong to the original stations.</p>
+    <p id="map-credits">Map credits: period borders on the Reveal Station map come from <a href="https://icr.ethz.ch/data/cshapes/" target="_blank" rel="noopener noreferrer">CShapes 2.0</a> by Schvitz, Rüegger, Girardin, Cederman, Weidmann and Gleditsch (International Conflict Research, ETH Zurich), licensed under <a class="nowrap" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a>. Citation: Schvitz, Guy, Seraina Rüegger, Luc Girardin, Lars-Erik Cederman, Nils Weidmann, and Kristian Skrede Gleditsch. 2022. "Mapping The International System, 1886-2017: The CShapes 2.0 Dataset." Journal of Conflict Resolution 66(1): 144–61.</p>
+    <p>Changes made for this receiver: only borders in effect between 1960 and 1989 are kept, the shapes are simplified for a small globe, coordinates are rounded, and outline direction is reordered for the drawing library. The modified borders file is shared under the same <span class="nowrap">CC BY-NC-SA 4.0</span> license. Small areas and modern stand-in shapes are made with <a href="https://www.naturalearthdata.com/" target="_blank" rel="noopener noreferrer">Natural Earth</a> (public domain). The map is drawn with d3-geo and d3-array (ISC license). Type: Archivo and IBM Plex Mono (SIL Open Font License 1.1), served from this site rather than a font service, so loading the page sends nothing to a third party. The map shows a country, republic or region only, not a transmitter site.</p>
+    <p>Original audio plays directly from the Internet Archive; nothing is copied to this site. Each recording is used with its recordist's permission or under the license shown in its credit. Source URLs and technical inspection may expose station identity.</p>
+  </dialog>
+  <dialog id="about-project-dialog" class="notes-dialog" aria-labelledby="about-project-title">
+    <div class="dialog-header"><p class="eyebrow">ABOUT THIS PROJECT</p><button class="close-dialog" aria-label="Close about" data-testid="button-close-about-project">×</button></div>
+    <h2 id="about-project-title">About the Historic Shortwave Project</h2>
+    <h3>Why I built this</h3>
+    <p>As a young shortwave listener in the 1960’s and 1970’s I spent many evenings tuning the shortwave radio bands, where a great many distant and exotic stations came and went through the static. It was a great way to virtually travel the world and experience other cultures. Today the shortwave radio bands are mostly quiet. In particular, so many of the local stations that once filled them have moved to FM and to digital outlets, and tuning across those empty frequencies now leaves me a little sad.</p>
+    <p>Historic Shortwave is my attempt to bring back some of that original experience. It plays audio recordings made between 1960 and 1989 on a simulated receiver, each at the frequency where it was originally heard, so you can tune across the 90, 60 and 49 meter bands, listen for an identification and then reveal the station’s details and location.</p>
+
+    <h3>Thank you to the recordists</h3>
+    <p>This is a non-commercial project. This site exists only because listeners recorded what they heard and later shared those recordings. My special thanks go to my friend Dave Valko, who made 490 of the 550 recordings here, for his permission to use them.</p>
+    <p>I also thank everyone else listed below for their work and for making their recordings available for non-commercial use under the terms of the license or permission that applies to each recording. Thanks also go to the Shortwave Radio Audio Archive and the Internet Archive, for preserving and hosting these recordings.</p>
+    <table class="recordists" data-testid="table-recordists">
+      <thead><tr><th scope="col">Recordist or contributor</th><th scope="col" class="n">Recordings</th></tr></thead>
+      <tbody>
+        <tr><td>Dave J. Valko</td><td class="n">490</td></tr>
+        <tr><td>Dan Robinson</td><td class="n">12</td></tr>
+        <tr><td>Dan Greenall</td><td class="n">10</td></tr>
+        <tr><td>Paul Harner</td><td class="n">9</td></tr>
+        <tr><td>Colin Newell</td><td class="n">4</td></tr>
+        <tr><td>Brett Saylor</td><td class="n">4</td></tr>
+        <tr><td>Jim Jordan</td><td class="n">3</td></tr>
+        <tr><td>Gert Irmler</td><td class="n">2</td></tr>
+        <tr><td>Jerry Johnston</td><td class="n">2</td></tr>
+        <tr><td>Greg Shoom</td><td class="n">2</td></tr>
+        <tr><td>Max Thomas</td><td class="n">2</td></tr>
+        <tr><td>Sarah Boucher</td><td class="n">1</td></tr>
+        <tr><td>Tom Gavaras</td><td class="n">1</td></tr>
+        <tr><td>Tony King</td><td class="n">1</td></tr>
+        <tr><td>Tom Laskowski</td><td class="n">1</td></tr>
+        <tr><td>Scott Nelson</td><td class="n">1</td></tr>
+        <tr><td>Al Sizer</td><td class="n">1</td></tr>
+        <tr><td>Nigel Thornbury</td><td class="n">1</td></tr>
+        <tr><td>Clinton Turner</td><td class="n">1</td></tr>
+        <tr><td>Jack Widner</td><td class="n">1</td></tr>
+        <tr><td>HB9GCE</td><td class="n">1</td></tr>
+      </tbody>
+      <tfoot><tr><td>Total</td><td class="n">550</td></tr></tfoot>
+    </table>
+    <p class="license-note">Each recording’s own credit and license appear with it when the station’s identification and details are revealed.</p>
+
+    <h3>Comments and new recordings</h3>
+    <p>Comments are welcome at <a href="mailto:historicshortwave@gmail.com" data-testid="text-contact-email">historicshortwave@gmail.com</a>. If you have or know of other recordings that could be added to the Historic Shortwave Project, please write with the details: the station, frequency, date and time, and where the recording can be found online.</p>
+    <p>If you made or shared one of these recordings and would like its credit corrected, or would like it removed, please write to the same address.</p>
+    <p class="signoff">73,<br>Bill Martin, WPE3HZI</p>
+  </dialog>
+  <dialog id="reset-dialog" class="notes-dialog"><div class="dialog-header"><p class="eyebrow">NEW BLIND SESSION</p><button class="close-dialog" aria-label="Cancel reset" data-testid="button-close-reset">×</button></div><h2>Start with a clean dial?</h2><p>This clears your reveal states and remembered playback positions.</p><button id="confirm-reset" class="primary-button" data-testid="button-confirm-reset">Clear and reset session</button></dialog>
+</body>
+</html>

@@ -1,0 +1,77 @@
+/* Release faceplate (approved 2026-11-08): light grey panel with an R-390-style nameplate. Copied into the release by tools/build-release.py. */
+:root{--panel:#c4c7c2;--panel-edge:#7e837d;--panel-text:#1d221e;--panel-muted:#434a44;--np-red:#9a2b1f}
+.receiver{color:var(--panel-text);border-color:#8a8f89;
+ background:repeating-linear-gradient(115deg,#ffffff0d 0px,#fff0 1px,#0000 3px,#00000008 4px),linear-gradient(125deg,#cfd2cd,#bec2bc 66%,#c6c9c4);
+ box-shadow:0 16px 26px #23292330,inset 0 1px 0 #ffffff90,inset 0 -1px 0 #0003}
+.screw{background:linear-gradient(140deg,#e2e4df,#6f746e)}.screw:after{background:#4b504b}
+.receiver-description{color:var(--panel-text)}.receiver-description small{color:var(--panel-muted)}
+.speaker-grille{background:radial-gradient(circle,#2b302c 1.5px,transparent 2px) 0 0/6px 6px,#a9ada7;border-color:#8a8f89}
+.speaker-group>span{color:var(--panel-text)}
+.receiver .hardware-controls label,.receiver .hardware-controls p,.band-small,.gain-control output,.step-selector button,.band-slider-wrap>div{color:var(--panel-muted)}
+.receiver .hardware-controls label{color:var(--panel-text)}
+.step-selector .active{color:var(--np-red);border-color:var(--np-red)}
+.toggle-button{background:#2a2f2b;color:#d9dcd5;border-color:#1b1f1c}.toggle-button.active{color:#f0c77f;border-color:#f0c77f}
+.tune-step{color:var(--panel-text);border-color:#5d635d70}.tune-step:hover{background:#0000000d}
+.power-switch{background:#9fa39d;border-color:#7d827c;box-shadow:inset 0 2px 6px #0005}
+.meter-disclaimer,.receiver-status{color:var(--panel-muted)}
+.signal-lamp{background:#7d837c}
+.receiver input[type=range]{accent-color:#2a2f2b}
+/* Nameplate */
+.nameplate{position:relative;width:340px;max-width:100%;padding:10px 26px 9px;background:linear-gradient(180deg,#1b1c1b,#0d0e0d);border-radius:3px;
+ box-shadow:0 1px 0 #ffffff80,0 2px 3px #0006,inset 0 0 0 1px #ffffff12;color:#f3f1e8;font-family:var(--font-body);text-transform:uppercase;text-align:center;line-height:1.18;font-stretch:85%}
+.np-title{font-size:15px;font-weight:600;letter-spacing:.04em}
+.np-name{font-size:19px;font-weight:700;letter-spacing:.06em;margin:2px 0 3px}
+.np-line{font-size:10.5px;font-weight:600;letter-spacing:.08em}
+.np-foot{display:flex;justify-content:space-between;font-size:9.5px;font-weight:600;letter-spacing:.08em;margin-top:5px;border-top:1px solid #ffffff40;padding-top:4px}
+.np-screw{position:absolute;width:8px;height:8px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#f2f2ee,#9a9d98 55%,#555 100%)}
+.np-screw:after{content:"";position:absolute;left:1px;right:1px;top:3.5px;height:1px;background:#3a3c3a;transform:rotate(-30deg)}
+.np-tl{left:7px;top:7px}.np-tr{right:7px;top:7px}.np-bl{left:7px;bottom:7px}.np-br{right:7px;bottom:7px}
+@media(max-width:720px){.nameplate{grid-column:1 / -1;width:100%;max-width:340px;padding:9px 22px 8px}.np-name{font-size:17px}.np-title{font-size:13px}}
+/* Dark engraved lettering on the grey panel */
+#receiver .receiver-description,#receiver label,#receiver .power-word,#receiver .alternate-heading{color:#1d221e}
+#receiver .power-word:not(.active){color:#4a514b;opacity:1}
+#receiver .band-mark{color:#4a514b}#receiver .band-mark:hover,#receiver .band-mark.active{color:#1d221e}
+#receiver #alternative-count{color:#9a2b1f}
+#receiver .nameplate span{font-family:var(--font-body);color:#f3f1e8;font-size:9.5px;margin:0;letter-spacing:.08em;font-weight:600}
+#receiver .digital-window label,#receiver .dial-window label,#receiver .meter-window label{color:#dbe9bd}
+/* Shorter plate: footer line removed, height 75% of the first version */
+.nameplate{padding-top:7px;padding-bottom:6px}
+@media(max-width:720px){.nameplate{padding-top:6px;padding-bottom:6px}}
+/* ABOUT panel (final text 2026-11-16) */
+#about-project-dialog h3{font-size:var(--text-sm,14px);letter-spacing:.06em;text-transform:uppercase;margin:18px 0 6px}
+#about-project-dialog p{line-height:1.55}
+#about-project-dialog .recordists{width:100%;min-width:0;border-collapse:collapse;margin:10px 0;font-size:14px}
+#about-project-dialog .recordists td{max-width:none;font-family:inherit;white-space:normal;font-size:14px;vertical-align:baseline}
+#about-project-dialog .recordists th,#about-project-dialog .recordists td{text-align:left;padding:4px 8px;border-bottom:1px solid currentColor;border-bottom-color:rgba(127,127,127,.35)}
+#about-project-dialog .recordists .n{text-align:right;font-variant-numeric:tabular-nums}
+#about-project-dialog .recordists tfoot td{font-weight:600;border-bottom:0}
+#about-project-dialog .license-note{font-size:12px;opacity:.8}
+#about-project-dialog .signoff{margin-top:16px}
+/* 2026-11-08 revisions */
+/* Nameplate: bare-metal cutouts around the four corner screws, as on contractor data tags */
+.nameplate{overflow:hidden}
+.np-screw{width:8px;height:8px;box-shadow:0 0 0 1px #6d716c,0 0 0 5px #c9ccc7,0 0 0 5.6px #8e928d}
+.np-tl{left:5px;top:5px}.np-tr{right:5px;top:5px}.np-bl{left:5px;bottom:5px}.np-br{right:5px;bottom:5px}
+/* S-meter status: always one line, so the face never changes height */
+#receiver .receiver-status{flex-wrap:nowrap;white-space:nowrap;height:24px;min-height:24px;line-height:24px;padding-top:0;overflow:hidden}
+#receiver #receiver-status{overflow:hidden;text-overflow:ellipsis;min-width:0}
+/* Reveal station: centered, styled like the tuned-frequency display */
+.reveal-row{display:flex;justify-content:center;margin-top:var(--space-5)}
+.reveal-row .reveal-button{margin:0;min-height:48px;padding:0 var(--space-6);background:#11281c;color:#dbe9bd;border:2px solid #7d8e72;border-radius:4px;box-shadow:inset 0 0 18px #0006,0 1px 0 #c1cab2;font-family:var(--font-mono);font-size:14px;letter-spacing:.12em}
+.reveal-row .reveal-button:not(:disabled):hover{background:#183424;color:#f2f7df;border-color:#a9bb98}
+.reveal-row .reveal-button:focus-visible{outline:2px solid #7d8e72;outline-offset:3px}
+.reveal-row .reveal-button:disabled{opacity:.55;cursor:not-allowed}
+.reveal-row .reveal-button .reveal-lamp{background:#4d5b47}
+.reveal-row .reveal-button:not(:disabled) .reveal-lamp{background:#e8a54b;box-shadow:0 0 6px #e8a54b99}
+/* 2026-11-08 revisions, round 2 */
+/* Fixed face size: the Recordings at This Frequency block always keeps its space; it is only shown or hidden. */
+#receiver .alternate-controls[hidden]{display:block !important;visibility:hidden}
+/* Nameplate corners: the black paint stops in a concave arc, leaving bare metal open to the plate edges around each screw */
+.np-screw{width:20px;height:20px;box-shadow:none;border-radius:50%;
+ background:radial-gradient(circle at 50% 50%,#eeeeea 0,#b4b7b2 2.6px,#7d807b 3.6px,#55585a 4.2px,#cfd1cd 4.9px,#d9dbd7 70%,#c9cbc6 100%)}
+.np-screw:after{left:6.5px;right:6.5px;top:9.5px;height:1px;background:#3a3c3a;transform:rotate(-30deg)}
+.np-tl{left:-1px;top:-1px}.np-tr{right:-1px;top:-1px}.np-bl{left:-1px;bottom:-1px}.np-br{right:-1px;bottom:-1px}
+.np-screw{width:22px;height:22px}.np-screw:after{left:7.5px;right:7.5px;top:10.5px}
+.np-tl{left:-3px;top:-3px}.np-tr{right:-3px;top:-3px}.np-bl{left:-3px;bottom:-3px}.np-br{right:-3px;bottom:-3px}
+/* 2026-11-16: long site title in the header */
+.wordmark .site-title{line-height:1.3;max-width:34ch}

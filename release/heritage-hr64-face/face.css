@@ -1,0 +1,227 @@
+/* Historic Shortwave new face (Phase 5c). From design/phase5-integration-mockup/face.css (Nov 15), control ids renamed to the release ids. */
+/* Phase 5 integration mockup: page-level rules removed; site.css supplies the page. */
+:root{
+  /* Layout idea: one rack-mounted receiver on a dark bench; everything else is a quiet caption. Single theme by choice. */
+  --bench:#141617;      /* workbench behind the receiver */
+  --panel:#b9beba;      /* light grey enamel front panel */
+  --ink:#1b1e1c;        /* engraved, paint-filled lettering */
+  --lamp-color:#ffc56e; /* incandescent dial lamp */
+  --pointer:#c8321f;    /* dial pointer and red scale ink */
+  --text:#d8d5cb;       /* page text */
+  --muted:#9a988f;
+  --font-panel:"Barlow Semi Condensed","Arial Narrow",Arial,sans-serif; /* bundled (OFL), so every computer matches */
+  --font-body:"Avenir Next","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --lamp:0;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+
+
+
+
+
+/* ---------- cabinet and panel ---------- */
+.rx{position:relative;padding:14px;border-radius:10px;background:#262928 var(--wrinkle,none);
+  box-shadow:0 40px 60px -18px rgba(0,0,0,.85),0 14px 22px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.14),inset 0 -2px 0 rgba(0,0,0,.6)}
+.panel{position:relative;border-radius:4px;padding:28px 34px 20px;background:var(--panel) var(--brush,none);
+  background-size:256px 256px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.75),inset 1px 0 0 rgba(255,255,255,.35),inset 0 -2px 3px rgba(0,0,0,.4),inset -1px 0 0 rgba(0,0,0,.3),0 1px 0 #000}
+.panel::before{content:"";position:absolute;inset:0;border-radius:4px;pointer-events:none;
+  background:linear-gradient(170deg,rgba(255,255,255,.2),rgba(255,255,255,0) 34%,rgba(0,0,0,.1))}
+.screw{position:absolute;width:15px;height:15px;border-radius:50%;
+  background:conic-gradient(from 30deg,#f4f4f0,#8b8e8a,#e8e9e4,#727572,#f4f4f0,#8b8e8a,#e8e9e4,#727572,#f4f4f0);
+  box-shadow:0 1px 2px rgba(0,0,0,.6),inset 0 0 0 1px rgba(0,0,0,.35)}
+.screw::after{content:"";position:absolute;left:1.5px;right:1.5px;top:6.2px;height:2.4px;background:#1d1f1e;border-radius:1px;
+  transform:rotate(var(--r,20deg));box-shadow:0 1px 0 rgba(255,255,255,.4)}
+.screw.tl{left:9px;top:9px}.screw.tr{right:9px;top:9px}.screw.bl{left:9px;bottom:9px}.screw.br{right:9px;bottom:9px}
+.eng{font:600 12px/1 var(--font-panel);letter-spacing:.16em;color:var(--ink);text-shadow:0 1px 0 rgba(255,255,255,.55);text-transform:uppercase;white-space:nowrap}
+.eng.sm{font-size:10.5px;letter-spacing:.12em}
+
+.top{position:relative;display:grid;grid-template-columns:minmax(0,1fr) 178px;gap:20px;align-items:center}
+/* Nameplate (Bill, 2026-11-19): styled after the Collins R-390/URR data tag. A brushed-aluminium plate with square
+   corners and a narrow bright border; a black field whose corners are notched around four Phillips screws.
+   The wording is unchanged. --np-b is the border width, --np-s the screw size, --np-n the notch radius. */
+.nameplate{--np-b:4px;--np-s:10px;--np-n:8px;position:relative;isolation:isolate;width:212px;margin-bottom:4px;padding:10px 16px 9px;border-radius:1.5px;text-align:center;color:#eeece4;
+  background:repeating-linear-gradient(90deg,rgba(255,255,255,.07) 0 1px,rgba(0,0,0,.04) 1px 2px,rgba(255,255,255,0) 2px 3px),linear-gradient(180deg,#e4e5e1,#c3c5c1 55%,#d6d8d4);
+  box-shadow:0 1px 2px rgba(0,0,0,.55),0 0 0 .5px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.8),inset 0 -1px 0 rgba(0,0,0,.18);
+  font-family:var(--font-panel);text-transform:uppercase}
+.nameplate::before{content:"";position:absolute;inset:var(--np-b);z-index:-1;background:linear-gradient(180deg,#141515,#070808);
+  --c:calc(var(--np-s)/2 + var(--np-b)*.5 - var(--np-b));
+  -webkit-mask:radial-gradient(circle var(--np-n) at var(--c) var(--c),transparent 96%,#000) top left/51% 51% no-repeat,
+    radial-gradient(circle var(--np-n) at calc(100% - var(--c)) var(--c),transparent 96%,#000) top right/51% 51% no-repeat,
+    radial-gradient(circle var(--np-n) at var(--c) calc(100% - var(--c)),transparent 96%,#000) bottom left/51% 51% no-repeat,
+    radial-gradient(circle var(--np-n) at calc(100% - var(--c)) calc(100% - var(--c)),transparent 96%,#000) bottom right/51% 51% no-repeat;
+  mask:radial-gradient(circle var(--np-n) at var(--c) var(--c),transparent 96%,#000) top left/51% 51% no-repeat,
+    radial-gradient(circle var(--np-n) at calc(100% - var(--c)) var(--c),transparent 96%,#000) top right/51% 51% no-repeat,
+    radial-gradient(circle var(--np-n) at var(--c) calc(100% - var(--c)),transparent 96%,#000) bottom left/51% 51% no-repeat,
+    radial-gradient(circle var(--np-n) at calc(100% - var(--c)) calc(100% - var(--c)),transparent 96%,#000) bottom right/51% 51% no-repeat}
+.nameplate b{display:block;font-size:14px;letter-spacing:.06em;margin:2px 0 3px;white-space:nowrap}
+.nameplate span{display:block;font-size:9.5px;letter-spacing:.13em;line-height:1.35}
+.nameplate span.s{font-size:7.5px;letter-spacing:.05em;color:#cfcdc4;white-space:nowrap}
+/* Phillips-head screws, centred just inside each corner of the black field */
+.nameplate i{position:absolute;width:var(--np-s);height:var(--np-s);border-radius:50%;transform:rotate(var(--r,0deg));
+  background:linear-gradient(#3a3c3b,#3a3c3b) center/56% 1.6px no-repeat,linear-gradient(#3a3c3b,#3a3c3b) center/1.6px 56% no-repeat,
+    radial-gradient(circle at 35% 30%,#fbfbf8,#b9bbb7 45%,#7d807c 80%,#555);
+  box-shadow:0 1px 1.5px rgba(0,0,0,.6),inset 0 0 0 .5px rgba(0,0,0,.4)}
+.nameplate i:nth-of-type(1){left:calc(var(--np-b)*.5);top:calc(var(--np-b)*.5);--r:18deg}
+.nameplate i:nth-of-type(2){right:calc(var(--np-b)*.5);top:calc(var(--np-b)*.5);--r:-31deg}
+.nameplate i:nth-of-type(3){left:calc(var(--np-b)*.5);bottom:calc(var(--np-b)*.5);--r:52deg}
+.nameplate i:nth-of-type(4){right:calc(var(--np-b)*.5);bottom:calc(var(--np-b)*.5);--r:7deg}
+
+.window{position:relative;border-radius:16px;padding:13px;
+  background:linear-gradient(165deg,#3b3e3c,#161717 30%,#0b0c0c 70%,#262827);
+  box-shadow:0 4px 6px rgba(0,0,0,.5),0 1px 0 rgba(0,0,0,.7),inset 0 1px 0 rgba(255,255,255,.28),inset 0 -1px 0 rgba(0,0,0,.8),inset 0 0 0 1px rgba(0,0,0,.6)}
+.window .bs{position:absolute;width:7px;height:7px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#d5d7d2,#6d706d 55%,#2a2c2b);box-shadow:0 0 0 1px rgba(0,0,0,.6)}
+.window .bs:nth-of-type(1){left:4px;top:4px}.window .bs:nth-of-type(2){right:4px;top:4px}
+.window .bs:nth-of-type(3){left:4px;bottom:4px}.window .bs:nth-of-type(4){right:4px;bottom:4px}
+/* S-meter rivets (Bill, 2026-11-19): its bezel corners are rounder (22 px against the dial's 16 px), so its rivets sit
+   5.8 px in, the same distance inside the curved corner as the dial's rivets at 4 px. */
+.meterwin .bs:nth-of-type(1){left:5.8px;top:5.8px}.meterwin .bs:nth-of-type(2){right:5.8px;top:5.8px}
+.meterwin .bs:nth-of-type(3){left:5.8px;bottom:5.8px}.meterwin .bs:nth-of-type(4){right:5.8px;bottom:5.8px}
+.meterwin{border-radius:22px;padding:15px}
+.window canvas{display:block;width:100%;height:150px}
+.window .well{position:relative;border-radius:9px;overflow:hidden;box-shadow:0 0 0 2px #050505,0 0 0 3px rgba(255,255,255,.12)}
+.meterwin .well{border-radius:12px}
+.window .well::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;border-radius:inherit;box-shadow:inset 0 6px 11px rgba(0,0,0,.7),inset 0 0 0 1px rgba(0,0,0,.7)}
+.window .well::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(112deg,rgba(255,255,255,.2) 0,rgba(255,255,255,.07) 17%,rgba(255,255,255,0) 17.4%,rgba(255,255,255,0) 58%,rgba(255,255,255,.07) 58.4%,rgba(255,255,255,.02) 72%,rgba(255,255,255,0) 72.4%),
+             linear-gradient(180deg,rgba(0,0,0,.42),rgba(0,0,0,0) 16%)}
+
+.bottom{position:relative;display:grid;grid-template-columns:minmax(0,1fr) 178px;gap:18px 20px;align-items:end;margin-top:10px}
+.group{display:flex;align-items:flex-end;justify-content:space-between;gap:14px;padding:0 3% 0 1%}
+.mid{gap:10px}
+.ctl{display:flex;flex-direction:column;align-items:center;gap:9px}
+#tuning-knob{margin:0 -1px}
+.knob{display:block;border-radius:50%;cursor:grab;touch-action:none;outline:none}
+.knob:active{cursor:grabbing}
+.knob:focus-visible{outline:3px solid var(--ink);outline-offset:2px}   /* dark ring outside the scale, like the power switch */
+/* iPhone/iPad (approved 2026-11-19): no Safari tap shading, long-press text selection or long-press menu on the knobs and
+   switches. The keyboard focus rings above and below are unchanged. */
+.knob,.toggle,.small-switch{-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+
+/* toggle switches */
+.toggle{position:relative;width:60px;height:92px;border:0;background:none;padding:0;cursor:pointer;border-radius:8px}
+.toggle:focus-visible{outline:2px solid #1b1e1c;outline-offset:2px}
+.toggle .nut{position:absolute;left:50%;top:50%;width:36px;height:36px;margin:-18px;border-radius:50%;
+  background:conic-gradient(from 15deg,#f6f6f2,#858885,#ecede8,#6f726f,#f6f6f2,#858885,#ecede8,#6f726f,#f6f6f2);
+  box-shadow:0 2px 4px rgba(0,0,0,.55),inset 0 0 0 1px rgba(0,0,0,.3)}
+.toggle .nut::after{content:"";position:absolute;inset:9px;border-radius:50%;background:radial-gradient(circle at 40% 35%,#3a3c3b,#070707)}
+.toggle .bat{position:absolute;left:50%;bottom:50%;width:13px;height:36px;margin-left:-6.5px;border-radius:7px 7px 4px 4px;
+  background:linear-gradient(90deg,#7c7f7b,#fbfbf8 34%,#bfc2bd 60%,#565957);
+  transform-origin:50% 100%;transform:scaleY(-1);transition:transform .09s cubic-bezier(.6,0,.9,.6);
+  filter:drop-shadow(5px 4px 3px rgba(0,0,0,.45))}
+.toggle .bat::after{content:"";position:absolute;left:-2px;right:-2px;top:-3px;height:17px;border-radius:50%;
+  background:radial-gradient(circle at 36% 30%,#fff,#c7cac5 55%,#6b6e6b)}
+.toggle[aria-checked="true"] .bat{transform:scaleY(1)}
+.toggle .hi,.toggle .lo{position:absolute;left:0;right:0;text-align:center}
+.toggle .hi{top:-3px}.toggle .lo{bottom:-3px}
+.powerrow{display:flex;align-items:center;gap:14px}
+.jewel{position:relative;width:24px;height:24px;border-radius:50%;
+  background:radial-gradient(circle at 36% 30%,#f2a08e,#a51f14 46%,#480906);
+  box-shadow:0 0 0 3px #d9dbd6,0 0 0 4px rgba(0,0,0,.45),0 2px 4px 4px rgba(0,0,0,.3),0 0 calc(22px*var(--lamp)) calc(3px*var(--lamp)) rgba(255,84,40,calc(.75*var(--lamp)))}
+.jewel::after{content:"";position:absolute;inset:0;border-radius:50%;opacity:var(--lamp);
+  background:radial-gradient(circle at 42% 38%,#fff3d2,#ff6a3a 48%,rgba(255,70,30,.55))}
+
+/* mechanical counter */
+.counter{position:relative;display:flex;gap:2px;padding:9px 11px;border-radius:12px;
+  background:linear-gradient(165deg,#3b3e3c,#161717 30%,#0b0c0c 70%,#262827);
+  box-shadow:0 3px 5px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.28),inset 0 0 0 1px rgba(0,0,0,.6);
+  filter:brightness(calc(.62 + .38*var(--lamp)))}
+.drum{position:relative;width:25px;height:38px;overflow:hidden;border-radius:2px;background:#0b0b0b;
+  box-shadow:inset 0 0 0 1px rgba(0,0,0,.8)}
+.drum .strip{position:absolute;left:0;right:0;top:0;will-change:transform}
+.drum .strip span{display:block;height:38px;font:700 27px/38px var(--font-panel);text-align:center;color:#efeadb}
+.drum.tenth{background:#e9e2cc}.drum.tenth .strip span{color:#191817}
+.drum::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(0,0,0,.78),rgba(0,0,0,0) 30%,rgba(255,255,255,.08) 48%,rgba(0,0,0,0) 66%,rgba(0,0,0,.8))}
+.dot{align-self:flex-end;width:5px;height:5px;margin:0 1px 6px;border-radius:50%;background:#efeadb}
+
+.viewbtn{align-self:center;font:600 12px/1 var(--font-panel);letter-spacing:.16em;text-transform:uppercase;color:var(--text);background:#22272a;border:1px solid #3a4145;border-radius:999px;padding:10px 18px;cursor:pointer}
+.viewbtn:hover{background:#2b3135}
+.viewbtn:focus-visible{outline:2px solid var(--lamp-color);outline-offset:2px}
+
+
+
+
+
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+
+@media (max-width:759px){
+  .panel{padding:22px 20px 22px}
+  .top{gap:14px}
+  .bottom{display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-end;gap:20px 26px}
+  .group{display:contents}
+  .mid{order:-1;flex-basis:100%}
+}
+@media (max-width:560px){
+  .top{grid-template-columns:1fr}
+  .window canvas{height:132px}
+  .bottom{gap:16px 18px}
+}
+@media (prefers-reduced-motion:reduce){.toggle .bat{transition:none}}
+
+/* ---------- the scene: desk, lamp, logbook; the receiver becomes a box seen from above left ---------- */
+.desk,.face,.vignette,.viewbtn{display:none}
+@media (min-width:760px){
+  .stage{position:relative;height:calc(1040px*var(--k,.7));overflow:hidden;border-radius:14px;
+    background:radial-gradient(40% 46% at 8% 30%,rgba(255,186,104,.3),rgba(255,186,104,0) 74%),linear-gradient(180deg,#0c0f11 0,#1a1f21 27%,#0a0c0d 100%);
+    box-shadow:0 30px 60px -20px rgba(0,0,0,.8),inset 0 0 0 1px rgba(255,255,255,.04)}
+  .scale{position:absolute;left:0;top:0;width:1760px;height:1040px;transform:scale(var(--k,.7));transform-origin:0 0;perspective:2600px;perspective-origin:50% 22%}
+  .world{position:absolute;inset:0;transform-style:preserve-3d;transform-origin:880px 600px;transform:rotateX(-22deg) rotateY(8deg)}
+  .desk,.face,.vignette{display:block}
+  .viewbtn{display:inline-block}
+  .vignette{position:absolute;inset:0;pointer-events:none;border-radius:14px;
+    background:radial-gradient(120% 100% at 45% 48%,rgba(0,0,0,0) 52%,rgba(0,0,0,.62) 100%)}
+
+  .box{position:absolute;left:250px;top:200px;width:1000px;transform-style:preserve-3d}
+  .world,.box,.desk,.face{pointer-events:none}
+  .box .rx{pointer-events:auto;transform:translateZ(1px);border-radius:6px;box-shadow:inset 0 1px 0 rgba(255,255,255,.14),inset 0 -2px 0 rgba(0,0,0,.6)}
+  .box .rx::after{content:"";position:absolute;inset:0;border-radius:6px;pointer-events:none;z-index:3;
+    background:radial-gradient(85% 130% at 0 0,rgba(255,198,128,.17),rgba(255,198,128,0) 58%),linear-gradient(90deg,rgba(0,0,0,0) 52%,rgba(0,0,0,.24))}
+  .face{position:absolute;background:#232625 var(--wrinkle,none)}
+  .face::after{content:"";position:absolute;inset:0;pointer-events:none}
+  .face.top{left:0;bottom:100%;width:100%;height:340px;transform-origin:50% 100%;transform:rotateX(90deg);border-radius:10px 10px 0 0;
+    box-shadow:inset 0 0 0 2px rgba(0,0,0,.5),inset 0 -3px 0 rgba(255,255,255,.1)}
+  .face.top::after{background:radial-gradient(90% 140% at 0 100%,rgba(255,200,130,.3),rgba(255,200,130,0) 60%),linear-gradient(180deg,rgba(0,0,0,.5),rgba(0,0,0,0) 55%)}
+  .face.top .vents{position:absolute;left:13%;right:13%;top:20%;height:52%;
+    background:repeating-linear-gradient(90deg,transparent 0 118px,#242726 118px 150px),repeating-linear-gradient(180deg,#060606 0 6px,transparent 6px 22px)}
+  .face.top .ts{position:absolute;bottom:14px;width:12px;height:12px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#d5d7d2,#6d706d 55%,#2a2c2b)}
+  .face.top .ts.a{left:16px}.face.top .ts.b{right:16px}
+  .face.side{right:100%;top:0;height:100%;width:340px;transform-origin:100% 50%;transform:rotateY(-90deg);border-radius:10px 0 0 6px;
+    box-shadow:inset 0 0 0 2px rgba(0,0,0,.5)}
+  .face.side::after{background:linear-gradient(90deg,rgba(0,0,0,.5),rgba(255,200,130,.2) 80%,rgba(255,210,150,.3)),linear-gradient(180deg,rgba(255,220,170,.12),rgba(0,0,0,.25))}
+
+  .desk{position:absolute;left:-900px;width:3600px;top:calc(200px + var(--H,450px));height:2200px;transform-origin:50% 0;
+    transform:translateZ(-1000px) rotateX(90deg);background:#2f1c10 var(--wood,none);background-size:1024px 512px}
+  .desk>i{position:absolute;display:block;pointer-events:none}
+  .desk::after{content:"";position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(ellipse 2100px 1350px at 1500px 1160px,rgba(0,0,0,0) 30%,rgba(0,0,0,.38) 62%,rgba(0,0,0,.84) 100%)}
+  .pool{left:200px;top:500px;width:2200px;height:1500px;background:radial-gradient(ellipse 16% 18% at 42% 46%,rgba(255,226,170,.5),rgba(255,226,170,0) 100%),radial-gradient(ellipse 50% 50% at 44% 46%,rgba(255,200,124,.46),rgba(255,190,110,.15) 48%,rgba(255,190,110,0) 72%)}
+  .rxshadow{left:1180px;top:640px;width:1150px;height:400px;background:rgba(0,0,0,.72);filter:blur(22px);border-radius:30px}
+  .spill{left:1190px;top:1002px;width:840px;height:330px;opacity:var(--lamp);
+    background:radial-gradient(ellipse 60% 100% at 42% 0,rgba(255,196,110,.42),rgba(255,196,110,0) 72%)}
+
+
+}
+
+/* sizes and angles that were inline style attributes in the single-file prototype */
+#band-knob{width:150px;height:150px}
+#gain-knob{width:140px;height:140px}
+#tuning-knob{width:180px;height:180px}
+.screw.tl{--r:24deg}.screw.tr{--r:-38deg}.screw.bl{--r:71deg}.screw.br{--r:8deg}
+/* textures are files here, not generated data: images */
+:root{--brush:url(./textures/panel.png);--wrinkle:url(./textures/cabinet.png);--wood:url(./textures/desk.jpg)}
+
+/* 5c: app.js rotates the grey-face knobs with inline transforms; the canvas knobs draw their own rotation. */
+#tuning-knob,#gain-knob,#band-knob{transform:none!important}
+
+/* A4 (Bill, 2026-11-19): between 760 and 1000 px wide (iPad portrait) the whole scene is drawn small, so the engraved
+   labels and the nameplate are enlarged; face.js enlarges the lettering it paints on the dial, meter and knobs. */
+@media (min-width:760px) and (max-width:1000px){
+  .eng{font-size:16px;letter-spacing:.14em}
+  .eng.sm{font-size:13.5px}
+  .nameplate{width:258px;padding:12px 18px 11px;--np-b:5px;--np-s:12px;--np-n:9.5px}
+  .nameplate b{font-size:18px}
+  .nameplate span{font-size:12px}
+  .nameplate span.s{font-size:9.5px}
+}

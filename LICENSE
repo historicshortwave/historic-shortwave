@@ -1,0 +1,51 @@
+Historic Shortwave — licensing overview
+
+This repository contains material under several licenses. The MIT License
+below applies to all files in this repository EXCEPT the files and folders
+listed under "Excluded material," which are governed by the terms stated there.
+The Historic Shortwave name and marks are not licensed by any of these terms;
+see TRADEMARK.md.
+
+------------------------------------------------------------------------------
+MIT License
+
+Copyright (c) 2026 William J. Martin
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+------------------------------------------------------------------------------
+Excluded material
+
+1. Receiver face code, stylesheets and textures — Creative Commons Attribution
+   4.0 International (CC BY 4.0), with the attribution stated in ASSETS.md.
+
+2. Third-party material — each item remains under its own license, as listed
+   in NOTICE.md, including:
+     - Map data derived from CShapes 2.0 (CC BY-NC-SA 4.0) and Natural Earth
+       (public domain): */geo/period-borders-*.json and */geo/reveal-regions.json
+     - Fonts (SIL Open Font License 1.1): */vendor/fonts/, tools/face-overlay/fonts/
+     - D3 libraries (ISC License): */vendor/LICENSE-d3-*.txt and the files they cover
+     - Shortwave Radio Audio Archive item descriptions (CC BY-NC 3.0):
+       data/release/sraa-item-descriptions-2026-10-20.json
+     - Background static recordings (Public Domain Mark 1.0): */audio/seasonal/
+
+3. Archival broadcast recordings are not included in this repository. They are
+   streamed from their original hosts, chiefly the Internet Archive, under
+   whatever terms those hosts and rights holders apply. Nothing in this
+   repository grants or implies any license to those recordings.
