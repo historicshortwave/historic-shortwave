@@ -32,8 +32,9 @@ SOFTWARE.
 ------------------------------------------------------------------------------
 Excluded material
 
-1. Receiver face code, stylesheets and textures — Creative Commons Attribution
-   4.0 International (CC BY 4.0), with the attribution stated in ASSETS.md.
+1. Receiver face code, stylesheets and textures, and the screenshot of the
+   face at docs/receiver-face.jpg — Creative Commons Attribution 4.0
+   International (CC BY 4.0), with the attribution stated in ASSETS.md.
 
 2. Third-party material — each item remains under its own license, as listed
    in NOTICE.md, including:

@@ -67,7 +67,7 @@ The other scripts in `tools/` rebuild catalogs, maps, credits and the seasonal s
 ## Licensing
 
 - Code: MIT License, except the material listed in `LICENSE`.
-- Receiver face code, stylesheets and textures: CC BY 4.0, with attribution to William J. Martin. See `ASSETS.md`.
+- Receiver face code, stylesheets and textures, and the screenshot above: CC BY 4.0, with attribution to William J. Martin. See `ASSETS.md`.
 - Third-party data, fonts and libraries keep their own licenses. See `NOTICE.md`.
 - The Historic Shortwave name and logo are trademarks. See `TRADEMARK.md`.
 - To contribute recordings or corrections, see `CONTRIBUTING.md`.
