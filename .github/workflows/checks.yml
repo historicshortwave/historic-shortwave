@@ -1,0 +1,49 @@
+name: Checks
+
+# Runs the tests that need no browser, the pre-publish check on each release
+# folder, and a rebuild that must reproduce the committed release folders.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Data and logic tests
+        run: |
+          node tools/test-band-catalogs.cjs
+          node tools/test-full-inventory.cjs
+          node tools/test-reveal-geography.cjs
+          node tools/test-seasonal-noise.cjs
+
+      - name: Pre-publish check
+        run: |
+          HR64_APP=release/heritage-hr64-face python3 tools/check-publish-ready.py
+          HR64_APP=release/heritage-hr64 python3 tools/check-publish-ready.py
+          HR64_APP=release/heritage-hr64-face python3 tools/test-publish-check.py
+
+      - name: Release folders match their sources
+        run: |
+          python3 tools/build-release.py
+          python3 tools/build-face.py
+          if [ -n "$(git status --porcelain -- release)" ]; then
+            echo "The release folders differ from what the build scripts produce:"
+            git status --short -- release
+            exit 1
+          fi

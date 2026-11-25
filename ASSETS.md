@@ -2,9 +2,10 @@
 
 Copyright (c) 2026 William J. Martin.
 
-The Historic Shortwave receiver face (its code, stylesheets and textures) is
-licensed under the Creative Commons Attribution 4.0 International License
-(CC BY 4.0): https://creativecommons.org/licenses/by/4.0/
+The Historic Shortwave receiver face (its code, stylesheets and textures, and
+the screenshot of the face in `docs/`) is licensed under the Creative Commons
+Attribution 4.0 International License (CC BY 4.0):
+https://creativecommons.org/licenses/by/4.0/
 
 You may copy, modify and redistribute the face, including in commercial work,
 provided you give the attribution below.
@@ -16,6 +17,7 @@ provided you give the attribution below.
 - `release/heritage-hr64-face/face-release.css`
 - `release/heritage-hr64-face/face.js`
 - `release/heritage-hr64-face/textures/`
+- `docs/receiver-face.jpg` — screenshot of the face, shown in the README
 
 The fonts used by the face remain under the SIL Open Font License; see NOTICE.md.
 
