@@ -7,7 +7,7 @@
 Reads release/heritage-hr64 (the grey release) and tools/face-overlay, writes release/heritage-hr64-face.
 The grey release, the frozen 60 m preview and the Cloudflare upload folder are not changed.
 - Same recordings, catalogs, credits, maps, seasonal noise, security headers and receiver logic as the grey release.
-- New page shell and 3D face (face.css, site.css, face-release.css, face.js, textures, Barlow Semi Condensed).
+- New page shell and 3D face (face.css, site.css, face-release.css, face.js, toggle-drawing.js, textures, Barlow Semi Condensed).
 - app.js keeps every control id, keyboard step, screen-reader value and the capture-window rule; the edits below
   only hand drawing and MAIN TUNING's pointer feel to face.js and change visible kHz labels to KC.
 """
@@ -29,7 +29,7 @@ def grab(text, pattern, what):
 
 if OUT.exists(): shutil.rmtree(OUT)
 shutil.copytree(SRC, OUT, ignore=shutil.ignore_patterns("style.css", "faceplate-grey.css"))
-for name in ("face.css", "site.css", "face-release.css", "face.js"): shutil.copy(OV / name, OUT / name)
+for name in ("face.css", "site.css", "face-release.css", "face.js", "toggle-drawing.js"): shutil.copy(OV / name, OUT / name)
 shutil.copytree(OV / "textures", OUT / "textures")
 for f in (OV / "fonts").iterdir(): shutil.copy(f, OUT / "vendor" / "fonts" / f.name)
 
