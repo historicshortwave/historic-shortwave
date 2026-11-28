@@ -140,7 +140,7 @@ header = {
     "generated_at_utc": timestamp,
     "workbook_file": WORKBOOK.name,
     "workbook_sha256": hashlib.sha256(WORKBOOK.read_bytes()).hexdigest(),
-    "recording_year_scope": {"from": 1960, "to": 1989, "complete_year_coverage_claimed": False},
+    "recording_year_scope": {"from": 1960, "to": 1992, "complete_year_coverage_claimed": False},
     "band_scope": {
         "core_hz": [4750000, 5060000],
         "proposed_extended_interface_hz": [4700000, 5085000],

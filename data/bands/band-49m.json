@@ -5,26 +5,26 @@
  "band": "49m",
  "bandLabel": "49 METERS",
  "nominalBand": "5950-6200 kHz",
- "era": "1960-1989",
+ "era": "1960-1992",
  "sourceWorkbook": "49-m-SWBC-Recordings-1945-2000-Candidates-1.xlsx",
- "workbookSha256": "d1bbf829a237e80b6f23f6b24373e304c8a30e7495d85cabfc456286f48963cc",
+ "workbookSha256": "9aaac01044dbed92851e072f36078b1945f34e2cf76f392aedba65cabd947730",
  "order": "fixed_ascending_candidate_number",
  "dialMinHz": 5850000,
  "dialMaxHz": 6350000,
  "defaultHz": 6100000,
  "counts": {
-  "total": 350,
-  "tunable": 261,
-  "held": 89,
+  "total": 354,
+  "tunable": 295,
+  "held": 59,
   "core": 282,
-  "edge": 68,
-  "tunableCore": 215,
-  "tunableEdge": 46,
-  "frequencies": 119,
+  "edge": 72,
+  "tunableCore": 234,
+  "tunableEdge": 61,
+  "frequencies": 137,
   "byReason": {
    "compilation_segment_review": 5,
    "mirror_duplicate": 8,
-   "outside_era": 76
+   "outside_era": 46
   }
  },
  "recordings": [
@@ -249,10 +249,8 @@
    "notes": null,
    "mapKey": null,
    "publicationReview": "pending",
-   "reviewReasons": [
-    "outside_era"
-   ],
-   "testEligible": false
+   "reviewReasons": [],
+   "testEligible": true
   },
   {
    "id": "rec-49m-0008",
@@ -381,10 +379,8 @@
    "notes": null,
    "mapKey": null,
    "publicationReview": "pending",
-   "reviewReasons": [
-    "outside_era"
-   ],
-   "testEligible": false
+   "reviewReasons": [],
+   "testEligible": true
   },
   {
    "id": "rec-49m-0012",
@@ -479,10 +475,8 @@
    "notes": null,
    "mapKey": null,
    "publicationReview": "pending",
-   "reviewReasons": [
-    "outside_era"
-   ],
-   "testEligible": false
+   "reviewReasons": [],
+   "testEligible": true
   },
   {
    "id": "rec-49m-0015",
@@ -931,10 +925,8 @@
    "notes": null,
    "mapKey": null,
    "publicationReview": "pending",
-   "reviewReasons": [
-    "outside_era"
-   ],
-   "testEligible": false
+   "reviewReasons": [],
+   "testEligible": true
   },
   {
    "id": "rec-49m-0029",
@@ -965,10 +957,8 @@
    "notes": null,
    "mapKey": null,
    "publicationReview": "pending",
-   "reviewReasons": [
-    "outside_era"
-   ],
-   "testEligible": false
+   "reviewReasons": [],
+   "testEligible": true
   },
   {
    "id": "rec-49m-0030",
@@ -1191,10 +1181,8 @@
    "notes": null,
    "mapKey": null,
    "publicationReview": "pending",
-   "reviewReasons": [
-    "outside_era"
-   ],
-   "testEligible": false
+   "reviewReasons": [],
+   "testEligible": true
   },
   {
    "id": "rec-49m-0037",
@@ -2495,10 +2483,8 @@
    "notes": null,
    "mapKey": null,
    "publicationReview": "pending",
-   "reviewReasons": [
-    "outside_era"
-   ],
-   "testEligible": false
+   "reviewReasons": [],
+   "testEligible": true
   },
   {
    "id": "rec-49m-0077",
@@ -2659,10 +2645,8 @@
    "notes": null,
    "mapKey": null,
    "publicationReview": "pending",
-   "reviewReasons": [
-    "outside_era"
-   ],
-   "testEligible": false
+   "reviewReasons": [],
+   "testEligible": true
   },
   {
    "id": "rec-49m-0082",
@@ -2759,10 +2743,8 @@
    "notes": null,
    "mapKey": null,
    "publicationReview": "pending",
-   "reviewReasons": [
-    "outside_era"
-   ],
-   "testEligible": false
+   "reviewReasons": [],
+   "testEligible": true
   },
   {
    "id": "rec-49m-0085",
@@ -3307,10 +3289,8 @@
    "notes": null,
    "mapKey": null,
    "publicationReview": "pending",
-   "reviewReasons": [
-    "outside_era"
-   ],
-   "testEligible": false
+   "reviewReasons": [],
+   "testEligible": true
   },
   {
    "id": "rec-49m-0102",
@@ -3759,10 +3739,8 @@
    "notes": null,
    "mapKey": null,
    "publicationReview": "pending",
-   "reviewReasons": [
-    "outside_era"
-   ],
-   "testEligible": false
+   "reviewReasons": [],
+   "testEligible": true
   },
   {
    "id": "rec-49m-0116",
@@ -4863,10 +4841,8 @@
    "notes": null,
    "mapKey": null,
    "publicationReview": "pending",
-   "reviewReasons": [
-    "outside_era"
-   ],
-   "testEligible": false
+   "reviewReasons": [],
+   "testEligible": true
   },
   {
    "id": "rec-49m-0150",
@@ -5187,10 +5163,8 @@
    "notes": null,
    "mapKey": null,
    "publicationReview": "pending",
-   "reviewReasons": [
-    "outside_era"
-   ],
-   "testEligible": false
+   "reviewReasons": [],
+   "testEligible": true
   },
   {
    "id": "rec-49m-0160",
@@ -5383,10 +5357,8 @@
    "notes": null,
    "mapKey": null,
    "publicationReview": "pending",
-   "reviewReasons": [
-    "outside_era"
-   ],
-   "testEligible": false
+   "reviewReasons": [],
+   "testEligible": true
   },
   {
    "id": "rec-49m-0166",
@@ -5935,10 +5907,8 @@
    "notes": null,
    "mapKey": null,
    "publicationReview": "pending",
-   "reviewReasons": [
-    "outside_era"
-   ],
-   "testEligible": false
+   "reviewReasons": [],
+   "testEligible": true
   },
   {
    "id": "rec-49m-0183",
@@ -6071,10 +6041,8 @@
    "notes": null,
    "mapKey": null,
    "publicationReview": "pending",
-   "reviewReasons": [
-    "outside_era"
-   ],
-   "testEligible": false
+   "reviewReasons": [],
+   "testEligible": true
   },
   {
    "id": "rec-49m-0187",
@@ -6973,10 +6941,8 @@
    "notes": null,
    "mapKey": null,
    "publicationReview": "pending",
-   "reviewReasons": [
-    "outside_era"
-   ],
-   "testEligible": false
+   "reviewReasons": [],
+   "testEligible": true
   },
   {
    "id": "rec-49m-0215",
@@ -8853,10 +8819,8 @@
    "notes": null,
    "mapKey": null,
    "publicationReview": "pending",
-   "reviewReasons": [
-    "outside_era"
-   ],
-   "testEligible": false
+   "reviewReasons": [],
+   "testEligible": true
   },
   {
    "id": "rec-49m-0273",
@@ -8953,10 +8917,8 @@
    "notes": null,
    "mapKey": null,
    "publicationReview": "pending",
-   "reviewReasons": [
-    "outside_era"
-   ],
-   "testEligible": false
+   "reviewReasons": [],
+   "testEligible": true
   },
   {
    "id": "rec-49m-0276",
@@ -9441,10 +9403,8 @@
    "notes": null,
    "mapKey": null,
    "publicationReview": "pending",
-   "reviewReasons": [
-    "outside_era"
-   ],
-   "testEligible": false
+   "reviewReasons": [],
+   "testEligible": true
   },
   {
    "id": "rec-49m-0291",
@@ -9475,10 +9435,8 @@
    "notes": null,
    "mapKey": null,
    "publicationReview": "pending",
-   "reviewReasons": [
-    "outside_era"
-   ],
-   "testEligible": false
+   "reviewReasons": [],
+   "testEligible": true
   },
   {
    "id": "rec-49m-0292",
@@ -9509,10 +9467,8 @@
    "notes": null,
    "mapKey": null,
    "publicationReview": "pending",
-   "reviewReasons": [
-    "outside_era"
-   ],
-   "testEligible": false
+   "reviewReasons": [],
+   "testEligible": true
   },
   {
    "id": "rec-49m-0293",
@@ -9673,10 +9629,8 @@
    "notes": null,
    "mapKey": null,
    "publicationReview": "pending",
-   "reviewReasons": [
-    "outside_era"
-   ],
-   "testEligible": false
+   "reviewReasons": [],
+   "testEligible": true
   },
   {
    "id": "rec-49m-0298",
@@ -10095,10 +10049,8 @@
    "notes": null,
    "mapKey": null,
    "publicationReview": "pending",
-   "reviewReasons": [
-    "outside_era"
-   ],
-   "testEligible": false
+   "reviewReasons": [],
+   "testEligible": true
   },
   {
    "id": "rec-49m-0311",
@@ -10129,10 +10081,8 @@
    "notes": null,
    "mapKey": null,
    "publicationReview": "pending",
-   "reviewReasons": [
-    "outside_era"
-   ],
-   "testEligible": false
+   "reviewReasons": [],
+   "testEligible": true
   },
   {
    "id": "rec-49m-0312",
@@ -10355,10 +10305,8 @@
    "notes": null,
    "mapKey": null,
    "publicationReview": "pending",
-   "reviewReasons": [
-    "outside_era"
-   ],
-   "testEligible": false
+   "reviewReasons": [],
+   "testEligible": true
   },
   {
    "id": "rec-49m-0319",
@@ -10877,10 +10825,8 @@
    "notes": null,
    "mapKey": null,
    "publicationReview": "pending",
-   "reviewReasons": [
-    "outside_era"
-   ],
-   "testEligible": false
+   "reviewReasons": [],
+   "testEligible": true
   },
   {
    "id": "rec-49m-0335",
@@ -10911,10 +10857,8 @@
    "notes": null,
    "mapKey": null,
    "publicationReview": "pending",
-   "reviewReasons": [
-    "outside_era"
-   ],
-   "testEligible": false
+   "reviewReasons": [],
+   "testEligible": true
   },
   {
    "id": "rec-49m-0336",
@@ -11041,10 +10985,8 @@
    "notes": null,
    "mapKey": null,
    "publicationReview": "pending",
-   "reviewReasons": [
-    "outside_era"
-   ],
-   "testEligible": false
+   "reviewReasons": [],
+   "testEligible": true
   },
   {
    "id": "rec-49m-0340",
@@ -11333,10 +11275,8 @@
    "notes": null,
    "mapKey": null,
    "publicationReview": "pending",
-   "reviewReasons": [
-    "outside_era"
-   ],
-   "testEligible": false
+   "reviewReasons": [],
+   "testEligible": true
   },
   {
    "id": "rec-49m-0349",
@@ -11405,6 +11345,134 @@
     "outside_era"
    ],
    "testEligible": false
+  },
+  {
+   "id": "rec-49m-0362",
+   "inventoryId": "49M-0362",
+   "sortKey": 362,
+   "band": "49m",
+   "frequencyHz": 6323700,
+   "frequencyLabel": "6323.7",
+   "station": "Estacion C",
+   "stationAsLabeled": "Estacion C",
+   "country": "Peru",
+   "countryAsLabeled": "PERU",
+   "date": "1984-06-17",
+   "certainty": "Exact label",
+   "time": "0118 UTC",
+   "timeBasis": "UTC/GMT stated",
+   "duration": "0:38",
+   "audioUrl": "https://archive.org/download/1984-06-17-peru-estacion-c-6323-7-0118-utc/1984-06-17%20%20PERU%20%20Estacion%20C%20%206323_7%20%200118%20UTC.mp3",
+   "sourceUrl": "https://archive.org/details/1984-06-17-peru-estacion-c-6323-7-0118-utc",
+   "collection": "Internet Archive - shortwave-airchecks",
+   "recordist": "Dave J. Valko (creator field)",
+   "transmitterLocality": "Not stated",
+   "recordingType": "Single station",
+   "rights": "Not stated",
+   "confidence": "High - title states date, frequency and UTC time",
+   "scope": "edge",
+   "evidence": "Title: \"1984-06-17 PERU Estacion C 6323.7 0118 UTC\". Added 2026-11-27; dated 1984-1988, not previously reviewed. Same station and frequency as 49M-0365 (1988-11-14); different recording.",
+   "notes": null,
+   "mapKey": null,
+   "publicationReview": "pending",
+   "reviewReasons": [],
+   "testEligible": true
+  },
+  {
+   "id": "rec-49m-0363",
+   "inventoryId": "49M-0363",
+   "sortKey": 363,
+   "band": "49m",
+   "frequencyHz": 6348500,
+   "frequencyLabel": "6348.5",
+   "station": "Radio Utcubamba",
+   "stationAsLabeled": "R. Utcubamba",
+   "country": "Peru",
+   "countryAsLabeled": "PERU",
+   "date": "1986-01-23",
+   "certainty": "Exact label",
+   "time": "0140, 0037 UTC",
+   "timeBasis": "UTC/GMT stated",
+   "duration": "1:22",
+   "audioUrl": "https://archive.org/download/1986-01-23-peru-r-utcubamba-6348-5-0140-0037-utc/1986-01-23%20%20PERU%20%20R%20Utcubamba%20%206348_5%20%200140%2C%200037%20UTC.mp3",
+   "sourceUrl": "https://archive.org/details/1986-01-23-peru-r-utcubamba-6348-5-0140-0037-utc",
+   "collection": "Internet Archive - shortwave-airchecks",
+   "recordist": "Dave J. Valko (creator field)",
+   "transmitterLocality": "Not stated",
+   "recordingType": "Single station",
+   "rights": "Not stated",
+   "confidence": "High - title states date, frequency and UTC time",
+   "scope": "edge",
+   "evidence": "Title: \"1986-01-23 PERU R. Utcubamba 6348.5 0140, 0037 UTC\". Added 2026-11-27; dated 1984-1988, not previously reviewed.",
+   "notes": null,
+   "mapKey": null,
+   "publicationReview": "pending",
+   "reviewReasons": [],
+   "testEligible": true
+  },
+  {
+   "id": "rec-49m-0364",
+   "inventoryId": "49M-0364",
+   "sortKey": 364,
+   "band": "49m",
+   "frequencyHz": 6304500,
+   "frequencyLabel": "6304.5",
+   "station": "Radio Acari",
+   "stationAsLabeled": "R. Acari",
+   "country": "Peru",
+   "countryAsLabeled": "PERU",
+   "date": "1987-09-21",
+   "certainty": "Exact label",
+   "time": "0212, 0227 UTC",
+   "timeBasis": "UTC/GMT stated",
+   "duration": "0:42",
+   "audioUrl": "https://archive.org/download/1987-09-21-peru-r-acari-6304-5-0212-0227-utc/1987-09-21%20%20PERU%20%20R%20Acari%20%206304_5%20%200212%2C%200227%20UTC.mp3",
+   "sourceUrl": "https://archive.org/details/1987-09-21-peru-r-acari-6304-5-0212-0227-utc",
+   "collection": "Internet Archive - shortwave-airchecks",
+   "recordist": "Dave J. Valko (creator field)",
+   "transmitterLocality": "Not stated",
+   "recordingType": "Single station",
+   "rights": "Not stated",
+   "confidence": "High - title states date, frequency and UTC time",
+   "scope": "edge",
+   "evidence": "Title: \"1987-09-21 PERU R. Acari 6304.5 0212, 0227 UTC\". Added 2026-11-27; dated 1984-1988, not previously reviewed.",
+   "notes": null,
+   "mapKey": null,
+   "publicationReview": "pending",
+   "reviewReasons": [],
+   "testEligible": true
+  },
+  {
+   "id": "rec-49m-0365",
+   "inventoryId": "49M-0365",
+   "sortKey": 365,
+   "band": "49m",
+   "frequencyHz": 6323700,
+   "frequencyLabel": "6323.7",
+   "station": "Estacion C",
+   "stationAsLabeled": "Estacion C",
+   "country": "Peru",
+   "countryAsLabeled": "PERU",
+   "date": "1988-11-14",
+   "certainty": "Exact label",
+   "time": "1026 UTC",
+   "timeBasis": "UTC/GMT stated",
+   "duration": "1:19",
+   "audioUrl": "https://archive.org/download/1988-11-14-peru-estacion-c-6323-7-1026-utc-s-on/1988-11-14%20%20PERU%20%20Estacion%20C%20%206323_7%20%201026%20UTC%20%28s-on%29.mp3",
+   "sourceUrl": "https://archive.org/details/1988-11-14-peru-estacion-c-6323-7-1026-utc-s-on",
+   "collection": "Internet Archive - shortwave-airchecks",
+   "recordist": "Dave J. Valko (creator field)",
+   "transmitterLocality": "Not stated",
+   "recordingType": "Single station",
+   "rights": "Not stated",
+   "confidence": "High - title states date, frequency and UTC time",
+   "scope": "edge",
+   "evidence": "Title: \"1988-11-14 PERU Estacion C 6323.7 1026 UTC (s-on)\". Added 2026-11-27; dated 1984-1988, not previously reviewed. Same station and frequency as 49M-0362 (1984-06-17); different recording.",
+   "notes": null,
+   "mapKey": null,
+   "publicationReview": "pending",
+   "reviewReasons": [],
+   "testEligible": true
   }
  ]
 }

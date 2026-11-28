@@ -319,7 +319,7 @@ function installCatalog(bandId,mode,data) {
   }
   /* Release build: no review-only entries. */
   const review=[];
-  const reasons={inventory_hold:'Inventory hold',frequency_review:'Frequency needs review',compilation_segment_review:'Compilation segments need review',outside_era:'Outside 1960–1989',mirror_duplicate:'Second copy of a kept recording'};
+  const reasons={inventory_hold:'Inventory hold',frequency_review:'Frequency needs review',compilation_segment_review:'Compilation segments need review',outside_era:'Outside 1960–1992',mirror_duplicate:'Second copy of a kept recording'};
   for(const r of review){
     const tr=document.createElement('tr');
     for(const text of [`Clip ${r.inventoryId}`,r.frequencyLabel,r.date,r.reviewReasons.map(reason=>reasons[reason]).join('; ')]){const td=document.createElement('td');td.textContent=text;tr.append(td);}

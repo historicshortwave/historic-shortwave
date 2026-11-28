@@ -70,10 +70,10 @@ for key, value in fills.items(): page = one(page, "{{%s}}" % key, value, f"templ
 assert "{{" not in page, "unfilled template placeholder"
 # Bill's answers of 2026-11-19 (A9): the tab title is "Historic Shortwave" only.
 page = one(page, "<title>Historic Shortwave | Archive Receiver</title>", "<title>Historic Shortwave</title>", "tab title")
-# Recording dates read 1969-1989 (the release data; Bill's date changes of 2026-11-19 and C6): the intro line and the
-# page description still carried the grey face's 1960-1989.
-page = one(page, "/</span> 1960-1989 COLLECTION</p>", "/</span> 1969-1989 COLLECTION</p>", "intro years")
-page = one(page, "90, 60 and 49 meter bands, 1960-1989.", "90, 60 and 49 meter bands, 1969-1989.", "description years")
+# Recording dates read 1969-1992 (era extended from 1989 on 2026-11-27; the release data; Bill's date changes of 2026-11-19 and C6): the intro line and the
+# page description still carried the grey face's 1960-1992.
+page = one(page, "/</span> 1960-1992 COLLECTION</p>", "/</span> 1969-1992 COLLECTION</p>", "intro years")
+page = one(page, "90, 60 and 49 meter bands, 1960-1992.", "90, 60 and 49 meter bands, 1969-1992.", "description years")
 # A14: no HTML comments in the published page (they named internal build folders).
 page = re.sub(r"\s*<!--.*?-->", "", page, flags=re.S)
 assert "<!--" not in page, "HTML comment left in the page"
@@ -252,34 +252,34 @@ for band, edits in NOTES.items():
     f.write_text(json.dumps(data, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
 assert changed == 26, changed   # the 25 reviewed notes plus the KC wording of rec-49m-0319
 
-# ---------- period borders 1969-1989 (C6, approved 2026-11-19) ----------
-# The grey release's borders file covers 1960-1989. The new face keeps only shapes in effect at some point in
-# 1969-1989, the recording years, in geo/period-borders-1969-1989.json. A shape that ended before 1969 can never be drawn
-# for these recordings; the build checks that every map highlight still exists and every map date falls in 1969-1989.
-geo = OUT / "geo"; old_geo = geo / "period-borders-1960-1989.json"
+# ---------- period borders 1969-1992 (C6, approved 2026-11-19; extended to 1992 on 2026-11-27) ----------
+# The grey release's borders file covers 1960-1992. The new face keeps only shapes in effect at some point in
+# 1969-1992, the recording years, in geo/period-borders-1969-1992.json. A shape that ended before 1969 can never be drawn
+# for these recordings; the build checks that every map highlight still exists and every map date falls in 1969-1992.
+geo = OUT / "geo"; old_geo = geo / "period-borders-1960-1992.json"
 borders = json.loads(old_geo.read_text(encoding="utf-8"))
-assert borders["name"] == "Period country borders 1960-1989 (simplified)"
-kept = [f for f in borders["features"] if f["end"] >= "1969-01-01" and f["start"] <= "1989-12-31"]
-borders.update(name="Period country borders 1969-1989 (simplified)", features=kept,
-               modified="Filtered to 1969-1989, simplified, coordinates rounded, ring direction re-ordered")
+assert borders["name"] == "Period country borders 1960-1992 (simplified)"
+kept = [f for f in borders["features"] if f["end"] >= "1969-01-01" and f["start"] <= "1992-12-31"]
+borders.update(name="Period country borders 1969-1992 (simplified)", features=kept,
+               modified="Filtered to 1969-1992, simplified, coordinates rounded, ring direction re-ordered")
 ids = {f["id"] for f in kept}
 entries = json.loads((geo / "reveal-geography.json").read_text(encoding="utf-8"))["entries"]
 for band in ("90m", "60m", "49m"):
     for r in json.loads((OUT / f"band-{band}.json").read_text(encoding="utf-8"))["recordings"]:
         e = entries.get(r["id"])
         if not e: continue
-        if e.get("dateUsed"): assert "1969-01-01" <= e["dateUsed"] <= "1989-12-31", f"map date outside 1969-1989: {r['id']} {e['dateUsed']}"
+        if e.get("dateUsed"): assert "1969-01-01" <= e["dateUsed"] <= "1992-12-31", f"map date outside 1969-1992: {r['id']} {e['dateUsed']}"
         h = e.get("highlight")
         if h and h["source"] == "cshapes": assert set(h["ids"]) <= ids, f"map highlight dropped by the 1969 filter: {r['id']}"
 old_geo.unlink()
-(geo / "period-borders-1969-1989.json").write_text(json.dumps(borders, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+(geo / "period-borders-1969-1992.json").write_text(json.dumps(borders, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
 lic = (geo / "LICENSES.md").read_text(encoding="utf-8")
-lic = one(lic, "`period-borders-1960-1989.json`", "`period-borders-1969-1989.json`", "licenses file name")
-lic = one(lic, "keeps only shapes valid in 1960–1989", "keeps only shapes valid in 1969–1989", "licenses years")
+lic = one(lic, "`period-borders-1960-1992.json`", "`period-borders-1969-1992.json`", "licenses file name")
+lic = one(lic, "keeps only shapes valid in 1960–1992", "keeps only shapes valid in 1969–1992", "licenses years")
 (geo / "LICENSES.md").write_text(lic, encoding="utf-8")
 rm = (OUT / "reveal-map.js").read_text(encoding="utf-8")
-rm = one(rm, "// Data: geo/period-borders-1960-1989.json", "// Data: geo/period-borders-1969-1989.json", "map comment")
-rm = one(rm, "loadJson('./geo/period-borders-1960-1989.json')", "loadJson('./geo/period-borders-1969-1989.json')", "map file")
+rm = one(rm, "// Data: geo/period-borders-1960-1992.json", "// Data: geo/period-borders-1969-1992.json", "map comment")
+rm = one(rm, "loadJson('./geo/period-borders-1960-1992.json')", "loadJson('./geo/period-borders-1969-1992.json')", "map file")
 (OUT / "reveal-map.js").write_text(rm, encoding="utf-8")
 
 for name in ("style.css", "faceplate-grey.css"): assert name not in page

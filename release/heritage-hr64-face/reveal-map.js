@@ -1,6 +1,6 @@
 // Reveal Station map (plan phase 6).
 // Nothing here runs or downloads until the first reveal. The page keeps working if any of it fails.
-// Data: geo/period-borders-1969-1989.json (CShapes 2.0, CC BY-NC-SA 4.0),
+// Data: geo/period-borders-1969-1992.json (CShapes 2.0, CC BY-NC-SA 4.0),
 //       geo/reveal-regions.json (Natural Earth, public domain), geo/reveal-geography.json (one entry per recording).
 // Drawing: vendor/d3-geo (ISC), loaded on demand. No tiles or third-party requests.
 (function () {
@@ -22,7 +22,7 @@
     if (!dataPromise) {
       const libs = window.d3?.geoOrthographic ? Promise.resolve()
         : loadScript('./vendor/d3-array.min.js').then(() => loadScript('./vendor/d3-geo.min.js'));
-      dataPromise = Promise.all([libs, loadJson('./geo/period-borders-1969-1989.json'), loadJson('./geo/reveal-regions.json'), loadJson('./geo/reveal-geography.json')])
+      dataPromise = Promise.all([libs, loadJson('./geo/period-borders-1969-1992.json'), loadJson('./geo/reveal-regions.json'), loadJson('./geo/reveal-geography.json')])
         .then(([, borders, regions, sidecar]) => ({ borders: borders.features, byId: new Map(borders.features.map(f => [f.id, f])), regions: regions.regions, entries: sidecar.entries }))
         .catch(error => { dataPromise = null; throw error; });  // allow a retry on the next reveal
     }

@@ -3,13 +3,13 @@
 const fs = require('fs'), path = require('path'), assert = require('assert');
 const root = path.resolve(__dirname, '..'), app = path.join(root, 'app/heritage-h60'), geo = path.join(app, 'geo');
 const load = f => JSON.parse(fs.readFileSync(path.join(geo, f), 'utf8'));
-const borders = load('period-borders-1960-1989.json'), regions = load('reveal-regions.json').regions, sidecar = load('reveal-geography.json');
+const borders = load('period-borders-1960-1992.json'), regions = load('reveal-regions.json').regions, sidecar = load('reveal-geography.json');
 const byId = Object.fromEntries(borders.features.map(f => [f.id, f]));
 const day = s => new Date(s + 'T00:00:00Z').getTime();
 
 // Files: sizes, licenses, attribution.
 const size = f => fs.statSync(path.join(geo, f)).size;
-assert(size('period-borders-1960-1989.json') < 1_000_000, 'period borders under 1 MB');
+assert(size('period-borders-1960-1992.json') < 1_000_000, 'period borders under 1 MB');
 assert(size('reveal-regions.json') < 200_000, 'fallback regions under 200 KB');
 assert(size('reveal-geography.json') < 400_000, 'sidecar under 400 KB');
 assert.equal(borders.license, 'CC BY-NC-SA 4.0');
@@ -17,11 +17,11 @@ assert(/CShapes 2\.0/.test(borders.attribution));
 assert(/CC BY-NC-SA 4\.0/.test(fs.readFileSync(path.join(geo, 'LICENSES.md'), 'utf8')));
 assert(/Natural Earth/.test(fs.readFileSync(path.join(geo, 'LICENSES.md'), 'utf8')));
 
-// Period borders: valid date windows overlapping 1960-1989, no overlapping windows for one country.
+// Period borders: valid date windows overlapping 1960-1992, no overlapping windows for one country.
 const perGw = {};
 for (const f of borders.features) {
   assert(day(f.start) <= day(f.end), `${f.id} start before end`);
-  assert(day(f.start) <= day('1989-12-31') && day(f.end) >= day('1960-01-01'), `${f.id} overlaps the era`);
+  assert(day(f.start) <= day('1992-12-31') && day(f.end) >= day('1960-01-01'), `${f.id} overlaps the era`);
   assert(['Polygon', 'MultiPolygon'].includes(f.geometry.type) && f.geometry.coordinates.length, `${f.id} has geometry`);
   assert(f.center.length === 2 && Math.abs(f.center[1]) <= 90, `${f.id} center`);
   (perGw[f.gw] ||= []).push(f);
@@ -57,8 +57,9 @@ for (const [band, file] of catalogs) {
     assert(Array.isArray(e.review));
   }
 }
-assert.equal(tunable, 709, 'all 709 tunable recordings');
-assert.equal(Object.keys(sidecar.entries).length, 709);
+// 709 before the 2026-11-27 era extension to 1992.
+assert.equal(tunable, 833, 'all 833 tunable recordings');
+assert.equal(Object.keys(sidecar.entries).length, 833);
 
 // Spot checks of period decisions.
 const find = (band, inv) => Object.values(sidecar.entries).find(e => e.band === band && e.inventoryId === inv);
@@ -67,6 +68,12 @@ assert.equal(find('49m', '49M-0072').kind, 'union');
 assert.equal(find('60m', 63).eraLabel, 'Karelian ASSR (Russian SFSR)');
 assert.equal(find('90m', '90M-0136').eraLabel, 'Zimbabwe Rhodesia');
 assert.equal(find('49m', '49M-0108').eraLabel, 'West Germany (Federal Republic of Germany)');
+// Era extension to 1992 (2026-11-27): reunified Germany, renamed Congo, late-Soviet republics.
+assert.equal(find('49m', '49M-0275').eraLabel, 'Germany'); assert.equal(find('49m', '49M-0275').basis, 'country as labeled in source');
+assert.equal(find('60m', 386).eraLabel, 'Republic of the Congo');
+assert.equal(find('60m', 392).eraLabel, 'Saint Petersburg (Russian SFSR, USSR)');
+assert.equal(find('49m', '49M-0292').eraLabel, 'Estonian SSR'); assert.equal(find('49m', '49M-0290').eraLabel, 'Kazakh SSR');
+assert.equal(find('49m', '49M-0291').kind, 'none');
 assert.equal(find('60m', 10).dateUsed, '1978-07-01');
 assert(find('49m', '49M-0328').marker, 'Vatican City gets a marker');
 assert(!find('60m', 10).marker, 'Angola has no marker');

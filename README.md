@@ -1,6 +1,6 @@
 # Historic Shortwave
 
-A simulated shortwave receiver that plays archival broadcast recordings from 1969 to 1989 at the frequencies where they were originally heard. Tune the 90, 60 and 49 meter bands, listen for a station identification, then reveal the station's name, location and recording credit.
+A simulated shortwave receiver that plays archival broadcast recordings from 1969 to 1992 at the frequencies where they were originally heard. Tune the 90, 60 and 49 meter bands, listen for a station identification, then reveal the station's name, location and recording credit.
 
 **Live site:** https://historicshortwave.org/
 

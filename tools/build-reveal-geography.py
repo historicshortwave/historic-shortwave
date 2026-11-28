@@ -2,7 +2,7 @@
 """Build the Reveal Station map data (plan phase 5). Data only; nothing in the page reads it yet.
 
 Writes app/heritage-h60/geo/:
-  period-borders-1960-1989.json   CShapes 2.0 country polygons valid at any time 1960-1989,
+  period-borders-1960-1992.json   CShapes 2.0 country polygons valid at any time 1960-1992,
                                   simplified for globe scale, each with exact start/end dates
   reveal-regions.json             Natural Earth 5.1.1 shapes for areas CShapes does not map
                                   (Soviet republics, micro-states, sub-national regions,
@@ -34,26 +34,26 @@ SOURCES = {
     "ne_units": ("https://naciscdn.org/naturalearth/10m/cultural/ne_10m_admin_0_map_units.zip", "ne_10m_admin_0_map_units.zip"),
     "ne_admin1": ("https://naciscdn.org/naturalearth/10m/cultural/ne_10m_admin_1_states_provinces.zip", "ne_10m_admin_1_states_provinces.zip"),
 }
-ERA = (dt.date(1960, 1, 1), dt.date(1989, 12, 31))
+ERA = (dt.date(1960, 1, 1), dt.date(1992, 12, 31))
 MARKER_KM2 = 3000          # highlights smaller than this also get a ring marker
 USSR = 365
 
 D = lambda s: dt.date.fromisoformat(s)
 
-# Recording-era names for states whose name changed inside 1960-1989.
-# Each list: (first day the label applies, label). The last entry applies until 1990.
+# Recording-era names for states whose name changed inside 1960-1992 (extended from 1989 on 2026-11-27).
+# Each list: (first day the label applies, label). The last entry applies until the end of 1992.
 ERA_NAMES = {
     434: [("1960-01-01", "Dahomey"), ("1975-11-30", "Benin")],
     439: [("1960-01-01", "Upper Volta"), ("1984-08-04", "Burkina Faso")],
     80:  [("1960-01-01", "British Honduras"), ("1973-06-01", "Belize (British colony)"), ("1981-09-21", "Belize")],
     490: [("1960-01-01", "Congo (Léopoldville / Kinshasa)"), ("1971-10-27", "Zaire")],
-    484: [("1960-01-01", "Congo (Brazzaville)"), ("1970-01-03", "People's Republic of the Congo")],
+    484: [("1960-01-01", "Congo (Brazzaville)"), ("1970-01-03", "People's Republic of the Congo"), ("1991-06-10", "Republic of the Congo")],
     482: [("1960-01-01", "Central African Republic"), ("1976-12-04", "Central African Empire"), ("1979-09-21", "Central African Republic")],
     552: [("1960-01-01", "Southern Rhodesia"), ("1965-11-11", "Rhodesia"), ("1979-06-01", "Zimbabwe Rhodesia"), ("1980-04-18", "Zimbabwe")],
     780: [("1960-01-01", "Ceylon"), ("1972-05-22", "Sri Lanka")],
     572: [("1960-01-01", "Swaziland")],
     437: [("1960-01-01", "Ivory Coast (Côte d'Ivoire)")],
-    565: [("1960-01-01", "South West Africa (Namibia), under South African administration")],
+    565: [("1960-01-01", "South West Africa (Namibia), under South African administration"), ("1990-03-21", "Namibia")],
     522: [("1960-01-01", "French Somaliland"), ("1967-07-05", "French Territory of the Afars and the Issas"), ("1977-06-27", "Djibouti")],
     540: [("1960-01-01", "Angola (Portuguese overseas province)"), ("1975-11-11", "Angola")],
     541: [("1960-01-01", "Mozambique (Portuguese overseas province)"), ("1975-06-25", "Mozambique")],
@@ -61,14 +61,14 @@ ERA_NAMES = {
     910: [("1960-01-01", "Territory of Papua and New Guinea (Australian administration)"), ("1975-09-16", "Papua New Guinea")],
     940: [("1960-01-01", "British Solomon Islands Protectorate"), ("1978-07-07", "Solomon Islands")],
     115: [("1960-01-01", "Surinam (Kingdom of the Netherlands)"), ("1975-11-25", "Surinam")],
-    678: [("1960-01-01", "Yemen Arab Republic (North Yemen)")],
+    678: [("1960-01-01", "Yemen Arab Republic (North Yemen)"), ("1990-05-22", "Yemen")],
     680: [("1967-11-30", "People's Republic of Southern Yemen"), ("1970-11-30", "People's Democratic Republic of Yemen (South Yemen)")],
-    260: [("1960-01-01", "West Germany (Federal Republic of Germany)")],
+    260: [("1960-01-01", "West Germany (Federal Republic of Germany)"), ("1990-10-03", "Germany")],
     # Plain display names where the CShapes name carries a historical alias.
     325: [("1960-01-01", "Italy")], 510: [("1960-01-01", "Tanganyika"), ("1964-04-26", "Tanzania")],
     120: [("1960-01-01", "French Guiana")], 640: [("1960-01-01", "Turkey")], 630: [("1960-01-01", "Iran")],
     360: [("1960-01-01", "Romania")], 775: [("1960-01-01", "Burma")], 811: [("1960-01-01", "Cambodia")],
-    365: [("1960-01-01", "USSR")],
+    365: [("1960-01-01", "USSR"), ("1991-12-26", "Russia")],
     315: [("1960-01-01", "Czechoslovakia")],
     411: [("1960-01-01", "Spanish Guinea"), ("1968-10-12", "Equatorial Guinea")],
     420: [("1960-01-01", "The Gambia")],
@@ -86,7 +86,7 @@ ERA_NAMES = {
 #   none       no transmitter country established
 C = lambda gw: {"kind": "country", "gw": gw}
 RULES = {
-    "AFGHANISTAN": C(700), "ALBANIA": C(339), "ANGOLA": C(540), "ARGENTINA": C(160), "AUSTRALIA": C(900),
+    "AFGHANISTAN": C(700), "ALBANIA": C(339), "ANGOLA": C(540), "ARGENTINA": C(160), "BHUTAN": C(760), "UGANDA": C(500), "ICELAND": C(395), "AUSTRALIA": C(900),
     "AUSTRIA": C(305), "BENIN": C(434), "BOLIVIA": C(145), "BOTSWANA": C(571), "BRAZIL": C(140),
     "BURKINA FASO": C(439), "BELIZE": C(80), "BURUNDI": C(516), "CAMEROON": C(471), "CENTRAL AFRICAN REP.": C(482),
     "CHAD": C(483), "CHINA, PEOPLE'S REP.": C(710), "COLOMBIA": C(100), "CONGO, DEM. REP.": C(490),
@@ -115,6 +115,10 @@ RULES = {
     "TAJIKISTAN": {"kind": "republic", "ne": ["unit:TJK"], "label": "Tajik SSR", "shownAs": "present-day Tajikistan"},
     "LATVIAN SSR": {"kind": "republic", "ne": ["unit:LVA"], "label": "Latvian SSR", "shownAs": "present-day Latvia"},
     "RUSSIAN FED. - KARELIA": {"kind": "republic", "ne": ["a1:RUS-2353"], "label": "Karelian ASSR (Russian SFSR)", "shownAs": "present-day Republic of Karelia"},
+    "UZBEKISTAN": {"kind": "republic", "ne": ["unit:UZB"], "label": "Uzbek SSR", "shownAs": "present-day Uzbekistan"},
+    "KAZAKHSTAN SSR": {"kind": "republic", "ne": ["unit:KAZ"], "label": "Kazakh SSR", "shownAs": "present-day Kazakhstan"},
+    "ESTONIAN SSR": {"kind": "republic", "ne": ["unit:EST"], "label": "Estonian SSR", "shownAs": "present-day Estonia"},
+    "RUSSIAN FED. - EUROPEAN": {"kind": "republic", "ne": ["a1:RUS-2337"], "label": "Saint Petersburg (Russian SFSR, USSR)", "shownAs": "present-day city of Saint Petersburg"},
     "USSR": {"kind": "union", "gw": USSR, "label": "USSR (republic not established)", "basis": "not established",
              "review": "The source names only the USSR. A republic needs period evidence (for example a WRTH transmitter list)."},
     # Regions named by the source inside a period country.
@@ -138,6 +142,8 @@ RULES = {
                          "ne": ["a1:NGA-2841", "a1:NGA-2842", "a1:NGA-2857", "a1:NGA-2845", "a1:NGA-2847", "a1:NGA-2863", "a1:NGA-2862", "a1:NGA-2843", "a1:NGA-2844"],
                          "label": "Biafra (1967–70), approximate area of the former Eastern Region",
                          "note": "Shown as the 1967 Eastern Region; by 1969 Biafran-held territory was much smaller."},
+    "INDIA - ANDAMAN AND NICOBAR ISLANDS": {"kind": "region", "gw": 750, "ne": ["a1:IND-2474"], "label": "Andaman and Nicobar Islands (India)"},
+    "MALAYSIA - SARAWAK": {"kind": "region", "gw": 820, "ne": ["a1:MYS-1187"], "label": "Sarawak (Malaysia)"},
     "AZAD KASHMIR": {"kind": "region", "gw": 770, "ne": ["a1:PAK-1109"], "label": "Azad Kashmir (Pakistan-administered Kashmir)", "approximate": True},
     # Areas CShapes does not map.
     "ANDORRA": {"kind": "territory", "ne": ["unit:AND"], "label": "Andorra"},
@@ -148,7 +154,7 @@ RULES = {
 }
 RULES["SUMATRA (INDONESIA)"] = RULES["INDONESIA - SUMATERA"]
 NONE_LABELS = {"(INTERNATIONAL WATERS)": "At sea (international waters)", "CLANDESTINE": "Clandestine station",
-               "UNIDENTIFIED (LATIN AMERICA)": "Unidentified station", "NOT STATED (NICARAGUA TARGET)": "Transmitter location not stated",
+               "UNIDENTIFIED (LATIN AMERICA)": "Unidentified station", "UNIDENTIFIED": "Unidentified station", "NOT STATED (NICARAGUA TARGET)": "Transmitter location not stated",
                "NOT STATED (NICARAGUA)": "Transmitter location not stated"}
 
 # Per-recording decisions that differ from the country label alone.
@@ -164,6 +170,9 @@ OVERRIDES = {
     "49M-0250": {"kind": "territory", "ne": ["a1:NLD-5149"], "label": "Bonaire (Netherlands Antilles, Kingdom of the Netherlands)",
                  "basis": "owner identified relay site",
                  "note": "Radio Netherlands via its Bonaire relay."},
+    # Recordings after German reunification (1990-10-03): "Germany" is the country as labeled, not an inference.
+    "49M-0275": {"kind": "country", "gw": 260, "basis": "country as labeled in source"},
+    "49M-0076": {"kind": "country", "gw": 260, "basis": "country as labeled in source"},
     "49M-0293": {"kind": "country", "gw": 91, "basis": "owner identified site",
                  "note": "Contra station targeting Nicaragua; transmitter in Honduras per the owner."},
 }
@@ -295,7 +304,7 @@ def main():
         target = cache / z.stem
         if not target.exists(): zipfile.ZipFile(z).extractall(target)
 
-    # --- CShapes: every polygon valid at some point in 1960-1989 ---
+    # --- CShapes: every polygon valid at some point in 1960-1992 ---
     period = []
     for f in json.loads(cs_path.read_text())["features"]:
         p = f["properties"]
@@ -422,11 +431,11 @@ def main():
 
     OUT.mkdir(parents=True, exist_ok=True)
     meta = lambda name: {"generatedBy": "tools/build-reveal-geography.py", "generated": dt.date.today().isoformat(), "name": name}
-    (OUT / "period-borders-1960-1989.json").write_text(json.dumps({
-        **meta("Period country borders 1960-1989 (simplified)"),
+    (OUT / "period-borders-1960-1992.json").write_text(json.dumps({
+        **meta("Period country borders 1960-1992 (simplified)"),
         "source": "CShapes 2.0, ETH Zurich ICR", "sourceUrl": SOURCES["cshapes"][0], "sourceSha256": sha(cs_path),
         "license": "CC BY-NC-SA 4.0", "licenseUrl": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-        "attribution": "Borders: CShapes 2.0 (Schvitz et al. 2022), CC BY-NC-SA 4.0", "modified": "Filtered to 1960-1989, simplified, coordinates rounded, ring direction re-ordered",
+        "attribution": "Borders: CShapes 2.0 (Schvitz et al. 2022), CC BY-NC-SA 4.0", "modified": "Filtered to 1960-1992, simplified, coordinates rounded, ring direction re-ordered",
         "simplification": "Douglas-Peucker 0.06 degrees for shapes over 200 km2, coordinates rounded to 0.01 degrees; islands under 400 km2 dropped from countries over 50,000 km2",
         "features": period_out}, ensure_ascii=False, separators=(",", ":")))
     (OUT / "reveal-regions.json").write_text(json.dumps({
@@ -444,11 +453,11 @@ def main():
         "entries": entries}, ensure_ascii=False, separators=(",", ":")))
     (OUT / "LICENSES.md").write_text("""# Map data licenses
 
-- `period-borders-1960-1989.json` is derived from **CShapes 2.0** (International Conflict Research, ETH Zurich): <https://icr.ethz.ch/data/cshapes/>.
+- `period-borders-1960-1992.json` is derived from **CShapes 2.0** (International Conflict Research, ETH Zurich): <https://icr.ethz.ch/data/cshapes/>.
   It is licensed **CC BY-NC-SA 4.0**: attribution required, no commercial use, and derived files must carry the same license.
   License statement from the CShapes page: "CShapes by Schvitz, Rüegger, Girardin, Cederman, Weidmann, Gleditsch is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License." License text: <https://creativecommons.org/licenses/by-nc-sa/4.0/>.
   Cite: Schvitz, Guy, Seraina Rüegger, Luc Girardin, Lars-Erik Cederman, Nils Weidmann, and Kristian Skrede Gleditsch. 2022. "Mapping The International System, 1886-2017: The CShapes 2.0 Dataset." Journal of Conflict Resolution 66(1): 144–61.
-  Modified: this file keeps only shapes valid in 1960–1989, simplifies them for globe-scale display, rounds coordinates and re-orders ring direction for d3-geo. It is licensed CC BY-NC-SA 4.0, the same as the source.
+  Modified: this file keeps only shapes valid in 1960–1992, simplifies them for globe-scale display, rounds coordinates and re-orders ring direction for d3-geo. It is licensed CC BY-NC-SA 4.0, the same as the source.
   The map card shows "Borders: CShapes 2.0 (Schvitz et al.), simplified, CC BY-NC-SA 4.0 · Map credits", with "CShapes 2.0" linked to the CShapes page and the license name linked to the license. "Map credits" opens Field notes at the full citation and the list of changes.
 - `reveal-regions.json` is derived from **Natural Earth** 5.1.1 (<https://www.naturalearthdata.com/>), which is in the public domain. Credit: "Made with Natural Earth".
 - Both are simplified for globe-scale display and are not suitable for measurement.

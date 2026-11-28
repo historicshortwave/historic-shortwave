@@ -96,12 +96,14 @@ with sync_playwright() as p:
     check("lights when power goes on at 4900.0 kHz", o() == {"on": True, "tab": True, "meter": True}, o())
     off_khz = 4900.5
     if FACE:   # the release catalog's groups near 4900 are closer together, so its capture window there is narrower
-        off_khz = page.evaluate("(() => { const g = ReceiverCatalog.findGroup(state.groups, 4900000); return (g.hz + Math.min(500, g.radius)) / 1000; })()")
+        # 2026-11-27: a 4899.8 kHz recording (clip 398) leaves 4900.0 a capture radius under one 0.1 kHz dial step, so the
+        # check uses the first group from 4900 kHz up whose window reaches at least one step off center.
+        off_khz = page.evaluate("(() => { const g = state.groups.find(x => x.hz >= 4900000 && x.radius >= 100); return (g.hz + Math.floor(Math.min(500, g.radius) / 100) * 100) / 1000; })()")
     tune_to(page, str(off_khz)); wait(150)
     check(f"still lit {off_khz - 4900:.1f} kHz off-center, inside the capture window", o()["on"] and o()["meter"], o())
     gap_khz = 4902
     if FACE:   # 4902.1 kHz is a recording in the release catalog; use the first empty step above 4902
-        gap_khz = page.evaluate("(() => { for (let hz = 4902000; ; hz += 100) if (!ReceiverCatalog.findGroup(state.groups, hz)) return hz / 1000; })()")
+        gap_khz = page.evaluate("(() => { for (let hz = 4902000; ; hz += 100) if (!ReceiverCatalog.findGroup(state.groups, hz, state.group?.hz)) return hz / 1000; })()")
     tune_to(page, str(gap_khz)); wait(150)
     check(f"off between recordings ({gap_khz:.1f} kHz)", o() == {"on": False, "tab": False, "meter": False}, o())
     tune_to(page, "4900"); wait(900)
@@ -133,6 +135,9 @@ with sync_playwright() as p:
                 sample = [(hz, True) for hz in hit[::max(1, len(hit) // 8)][:8]] + [(hz, False) for hz in miss[::max(1, len(miss) // 8)][:8]]
                 bad = []
                 for hz, captured in sample:
+                    # The sweep map carries the retain radius of the step below; a direct jump does not (2026-11-27: 49M-0272 at
+                    # 6187.8 kHz holds 6188.7 only on the upward sweep). Expect what tune() itself will find from the current group.
+                    captured = page.evaluate(f"!!ReceiverCatalog.findGroup(state.groups, {hz}, state.group?.hz)")
                     page.evaluate(f"tune({hz})"); up = o()["on"]
                     if up != (captured and power): bad.append((hz, captured, up))
                 check(f"{band} needle, power {'on' if power else 'off'}: {'up only where captured' if power else 'never up'} ({len(sample)} sampled steps)", not bad, bad)

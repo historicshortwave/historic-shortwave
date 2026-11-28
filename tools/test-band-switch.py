@@ -120,7 +120,7 @@ with sync_playwright() as p:
         check(f"90 m catalog counts ({c['frequencies']} positions, {c['total']} recordings)", st["guide"] == f"{c['frequencies']} recording positions" and st["status"] == f"{c['total']} recordings on 90 m", st)
         check("90 m scope", st["scope"] == "90 METER COLLECTION", st)
     else:
-        check("90 m catalog counts", st["guide"] == "60 recording positions" and st["status"] == "141 inventory entries · 125 tunable · 16 awaiting review" and st["review"] == "16", st)
+        check("90 m catalog counts", st["guide"] == "77 recording positions" and st["status"] == "170 inventory entries · 154 tunable · 16 awaiting review" and st["review"] == "16", st)
         check("baseline selector hidden on 90 m", st["catalogHidden"] is True, st)
         check("90 m scope and description", st["scope"] == "90 METER COLLECTION" and st["desc"] == "90 METER ARCHIVE BAND", st)
     check("band change announced", st["announce"] == f"90 meter band, 3150 to 3500 {UNIT}", st["announce"])

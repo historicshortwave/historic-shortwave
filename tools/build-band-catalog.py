@@ -35,7 +35,7 @@ BANDS = {
         "label": "49 METERS", "nominal": "5950-6200 kHz",
     },
 }
-ERA = (1960, 1989)
+ERA = (1960, 1992)
 
 # Frequencies that need an explicit decision (plan: "Data rules").
 FREQUENCY_OVERRIDES = {

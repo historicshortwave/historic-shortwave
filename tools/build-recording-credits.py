@@ -149,8 +149,9 @@ for f, band in [("full-inventory.json", "60m"), ("band-90m.json", "90m"), ("band
         credits[r["id"]] = c
         counts[c["credit"]] = counts.get(c["credit"], 0) + 1
 tunable = len(credits)
-if tunable != 709:
-    sys.exit(f"expected 709 tunable credits, got {tunable}")
+# 709 before the 2026-11-27 era extension to 1992 (60 m 323, 90 m 125, 49 m 261); now 384 + 154 + 295.
+if tunable != 833:
+    sys.exit(f"expected 833 tunable credits, got {tunable}")
 # The frozen 60 m baseline can include records held in the full catalog (for example ID 24); credit those too.
 pilot = json.loads((app / "pilot.json").read_text())["recordings"]
 for r in pilot:

@@ -1,5 +1,7 @@
 # HR-64: 90 m and 49 m Recording Lists — Phase 1 Review
 
+> **Update, November 27, 2026.** The era was extended from 1960–1989 to 1960–1992, and Dave J. Valko recordings were added (29 on 90 m, 4 band-edge rows on 49 m). The counts below are the October 20 figures. After the update: 90 m has 170 rows read, 154 tunable; 49 m has 354 rows read, 295 tunable; 46 49 m rows are outside 1960–1992 (20 before 1960, 26 after 1992); 60 m has 410 entries, 384 tunable.
+
 Built October 20, 2026 by `tools/build-band-catalog.py` from the core and band-edge sheets of the two candidate workbooks in `data/bands/`. These lists are staged in `data/bands/` and are not yet connected to the receiver. `tools/test-band-catalogs.cjs` passes, and the existing 60 m and seasonal-noise tests still pass unchanged.
 
 ## Totals
@@ -49,7 +51,7 @@ Where the spreadsheet says two rows are the same recording, one copy is kept: a 
 - **90 m:** 90M-0002, 0007, 0014, 0018, 0021, 0028, 0089, 0105, 0132, 0135. This includes the five-station Brazilian file from 1989-05-10 and the Rhodesia tape that is also held on 60 m.
 - **49 m:** 49M-0049, 0143, 0161, 0246, 0247. Two of these give segment timestamps and could be cued later.
 
-The full list of the 76 out-of-era 49 m rows is in `band-49m.json` (review reason `outside_era`).
+The full list of the out-of-era 49 m rows (76 on October 20; 46 after the November 27 extension to 1992) is in `band-49m.json` (review reason `outside_era`).
 
 ## Frequency handling
 
