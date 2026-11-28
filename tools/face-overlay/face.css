@@ -102,17 +102,8 @@ html,body{margin:0}
 /* toggle switches */
 .toggle{position:relative;width:60px;height:92px;border:0;background:none;padding:0;cursor:pointer;border-radius:8px}
 .toggle:focus-visible{outline:2px solid #1b1e1c;outline-offset:2px}
-.toggle .nut{position:absolute;left:50%;top:50%;width:36px;height:36px;margin:-18px;border-radius:50%;
-  background:conic-gradient(from 15deg,#f6f6f2,#858885,#ecede8,#6f726f,#f6f6f2,#858885,#ecede8,#6f726f,#f6f6f2);
-  box-shadow:0 2px 4px rgba(0,0,0,.55),inset 0 0 0 1px rgba(0,0,0,.3)}
-.toggle .nut::after{content:"";position:absolute;inset:9px;border-radius:50%;background:radial-gradient(circle at 40% 35%,#3a3c3b,#070707)}
-.toggle .bat{position:absolute;left:50%;bottom:50%;width:13px;height:36px;margin-left:-6.5px;border-radius:7px 7px 4px 4px;
-  background:linear-gradient(90deg,#7c7f7b,#fbfbf8 34%,#bfc2bd 60%,#565957);
-  transform-origin:50% 100%;transform:scaleY(-1);transition:transform .09s cubic-bezier(.6,0,.9,.6);
-  filter:drop-shadow(5px 4px 3px rgba(0,0,0,.45))}
-.toggle .bat::after{content:"";position:absolute;left:-2px;right:-2px;top:-3px;height:17px;border-radius:50%;
-  background:radial-gradient(circle at 36% 30%,#fff,#c7cac5 55%,#6b6e6b)}
-.toggle[aria-checked="true"] .bat{transform:scaleY(1)}
+/* Rev 3a (Bill, 2026-11-28): the nut and bat lever are drawn by toggle-drawing.js as a hidden SVG that follows aria-checked. */
+.toggle .hs-toggle{position:absolute;left:0;top:0;width:60px;height:92px;overflow:visible;pointer-events:none}
 .toggle .hi,.toggle .lo{position:absolute;left:0;right:0;text-align:center}
 .toggle .hi{top:-3px}.toggle .lo{bottom:-3px}
 .powerrow{display:flex;align-items:center;gap:14px}
@@ -158,7 +149,6 @@ html,body{margin:0}
   .window canvas{height:132px}
   .bottom{gap:16px 18px}
 }
-@media (prefers-reduced-motion:reduce){.toggle .bat{transition:none}}
 
 /* ---------- the scene: desk, lamp, logbook; the receiver becomes a box seen from above left ---------- */
 .desk,.face,.vignette,.viewbtn{display:none}
