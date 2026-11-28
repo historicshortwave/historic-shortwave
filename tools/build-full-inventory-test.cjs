@@ -13,7 +13,8 @@ const recordings=source.records.map(r=>{
   if(compilationIds.has(r.inventory_id))reasons.push('compilation_segment_review');
   return {
     id:r.recording_id,inventoryId:r.inventory_id,
-    frequencyHz:r.normalization.numeric_frequency_mentions_hz.length===1?r.normalization.numeric_frequency_mentions_hz[0]:null,
+    // Snap to the 0.1 kHz dial step, as tools/build-band-catalog.py does; the label keeps the recordist's figure (added 2026-11-27).
+    frequencyHz:r.normalization.numeric_frequency_mentions_hz.length===1?Math.round(r.normalization.numeric_frequency_mentions_hz[0]/100)*100:null,
     frequencyLabel:r.source.frequency_label,station:r.source.station_label,date:r.source.recording_date_label,
     time:r.source.time_label,certainty:r.source.date_certainty,audioUrl:r.source.audio_url,
     sourceUrl:r.source.archive_page,collection:r.source.collection,notes:r.source.notes,
@@ -23,7 +24,7 @@ const recordings=source.records.map(r=>{
     testEligible:reasons.length===0,reviewReasons:reasons
   };
 }).sort((a,b)=>a.inventoryId-b.inventoryId);
-if(recordings.length!==349||new Set(recordings.map(r=>r.id)).size!==349)throw Error('Invalid inventory coverage');
+if(recordings.length!==410||new Set(recordings.map(r=>r.id)).size!==410)throw Error('Invalid inventory coverage');
 const active=recordings.filter(r=>r.testEligible),review=recordings.filter(r=>!r.testEligible);
 const counts={
   total:recordings.length,tunable:active.length,review:review.length,

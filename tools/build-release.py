@@ -106,8 +106,8 @@ edit(OUT / "app.js", [
 ])
 edit(OUT / "index.html", [
     ("Tune a historical shortwave receiver with a twenty-record baseline and a full-inventory test mode. Listen for an identification, then reveal the station.",
-     "Tune a historical shortwave receiver across the 90, 60 and 49 meter bands, 1960–1989. Listen for an identification, then reveal the station."),
-    ("PILOT NO. 01 <span>/</span> 1960–1989 COLLECTION", "90 · 60 · 49 METERS <span>/</span> 1960–1989 COLLECTION"),
+     "Tune a historical shortwave receiver across the 90, 60 and 49 meter bands, 1960–1992. Listen for an identification, then reveal the station."),
+    ("PILOT NO. 01 <span>/</span> 1960–1992 COLLECTION", "90 · 60 · 49 METERS <span>/</span> 1960–1992 COLLECTION"),
     ("Twenty recordings. Three decades. Tune, listen, identify.", "Historical recordings at their original frequencies. Tune the band, listen for an identification, then reveal the station."),
     ("CURATOR PREVIEW<small>", "ARCHIVE AUDIO<small>"),
     ('aria-label="Receiver test catalog"', 'aria-label="Recordings on this band"'),
@@ -115,8 +115,8 @@ edit(OUT / "index.html", [
     ("Loading twenty-record baseline…", "Loading recordings…"),
     ('<span id="guide-count">20 recording positions</span>', '<span id="guide-count"></span>'),
     ("HERITAGE HR-64 / TWENTY-RECORD BASELINE", "HERITAGE HR-64"),
-    ("On 60 meters, start with the twenty-record baseline or select full inventory; 90 and 49 meters always use their full 1960–1989 catalogs, with compilations, second copies and (on 49 meters) recordings outside 1960–1989 held for review. Shared frequencies",
-     f"The receiver holds {total} recordings from 1960-1989: {summary['90m'][0]} on 90 meters, {summary['60m'][0]} on 60 meters and {summary['49m'][0]} on 49 meters. Shared frequencies"),
+    ("On 60 meters, start with the twenty-record baseline or select full inventory; 90 and 49 meters always use their full 1960–1992 catalogs, with compilations, second copies and (on 49 meters) recordings outside 1960–1992 held for review. Shared frequencies",
+     f"The receiver holds {total} recordings from 1960-1992: {summary['90m'][0]} on 90 meters, {summary['60m'][0]} on 60 meters and {summary['49m'][0]} on 49 meters. Shared frequencies"),
     ("    <p>Full mode retains all 349 entries, with existing holds, conflicting frequencies and compilation segments in a review-only queue. The twenty-record baseline is unchanged. Short clips are retained pending the owner's individual listening review.</p>\n", ""),
     ("Original audio plays directly from archive hosts. Public-release rights, attribution and host reliability still require review. Source URLs and technical inspection may expose station identity.",
      "Original audio plays directly from the Internet Archive; nothing is copied to this site. Each recording is used with its recordist's permission or under the license shown in its credit. Source URLs and technical inspection may expose station identity."),
@@ -204,15 +204,15 @@ edit(OUT / "app.js", [
 # from the overlay template, carrying the page's own policy (one source) plus frame-ancestors 'none'.
 # Site text revisions (owner-approved 2026-11-15/16). Avoid confusion with the Shortwave Radio Audio Archive
 # (shortwavearchive.com): no "Shortwave Archive" naming. "Archival" wording, AUDIO CLIP and the new footer.
-# Date ranges use a hyphen (1960-1989) per the owner. Source names in credits are not changed here.
+# Date ranges use a hyphen (1960-1992) per the owner. Source names in credits are not changed here.
 edit(OUT / "index.html", [
     ('aria-label="Shortwave Archive home"', 'aria-label="Historic Shortwave home"'),
     ('aria-label="Shortwave Archive emblem"', 'aria-label="Historic Shortwave emblem"'),
     ("<span>SHORTWAVE ARCHIVE<small>THE HISTORICAL LISTENING ROOM</small></span>",
      '<span class="site-title">A Simulated Shortwave Receiver presenting Archival Audio Recordings<small>THE HISTORICAL LISTENING ROOM</small></span>'),
     ("<div>ARCHIVE AUDIO<small>Original audio, played from archive hosts.</small></div>", "<div>ARCHIVAL AUDIO</div>"),
-    ("90 · 60 · 49 METERS <span>/</span> 1960–1989 COLLECTION", "90 · 60 · 49 METERS <span>/</span> 1960-1989 COLLECTION"),
-    ("across the 90, 60 and 49 meter bands, 1960–1989.", "across the 90, 60 and 49 meter bands, 1960-1989."),
+    ("90 · 60 · 49 METERS <span>/</span> 1960–1992 COLLECTION", "90 · 60 · 49 METERS <span>/</span> 1960-1992 COLLECTION"),
+    ("across the 90, 60 and 49 meter bands, 1960–1992.", "across the 90, 60 and 49 meter bands, 1960-1992."),
     ('<span id="clip-id" data-testid="text-clip">ARCHIVE SIGNAL</span>', '<span id="clip-id" data-testid="text-clip">AUDIO CLIP</span>'),
     ("<p>A curated historical band, not simultaneous reception. Recording times are source labels, not the current clock.</p>",
      "<p>Recording times are drawn from original audio source labels, not the current clock.</p>"),

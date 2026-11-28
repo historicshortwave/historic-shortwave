@@ -5,7 +5,7 @@ under the license shown.
 
 | Material | Location | License | Credit |
 |---|---|---|---|
-| Period borders (1960–1989 and 1969–1989 files), derived from CShapes 2.0 | `*/geo/period-borders-*.json` | CC BY-NC-SA 4.0 | Schvitz et al., ETH Zurich; see `*/geo/LICENSES.md` |
+| Period borders (1960–1992 and 1969–1992 files), derived from CShapes 2.0 | `*/geo/period-borders-*.json` | CC BY-NC-SA 4.0 | Schvitz et al., ETH Zurich; see `*/geo/LICENSES.md` |
 | Reveal regions, derived from Natural Earth 5.1.1 | `*/geo/reveal-regions.json` | Public domain | Made with Natural Earth |
 | Archivo, IBM Plex Mono, Barlow Semi Condensed fonts | `*/vendor/fonts/`, `tools/face-overlay/fonts/` | SIL Open Font License 1.1 | See the `OFL-*.txt` files |
 | d3-array, d3-geo | `*/vendor/` | ISC License | See the `LICENSE-d3-*.txt` files |

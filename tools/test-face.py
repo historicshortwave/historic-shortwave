@@ -9,7 +9,7 @@ handoff/session-2026-11-19/test-helpers/test-face-webkit.py. In WebKit the two <
 (WebKit's own list styling); they are harmless and are reported apart from real page errors.
 Checks added 2026-11-19 for Bill's answers: A2 clicks stop at power-off, A3 STANDBY lit dimly, A4 larger lettering at
 760-1000 px, A6 reset keeps the band, A7/A9 kilocycles, KC details line, tab title, hidden band label gone, A14 no HTML
-comments, C4 listener notes, C6 1969-1989 nameplate and borders file.
+comments, C4 listener notes, C6 1969-1989 nameplate and borders file (years extended to 1992 on 2026-11-27).
 
 Archive audio is blocked in the test, so a captured recording shows LOADING or AUDIO ERROR; that is expected.
 """
@@ -42,10 +42,10 @@ with sync_playwright() as p:
         # Bill's answers, 2026-11-19: labels and wording (A7, A9, A14, C6)
         check(pg.title() == "Historic Shortwave", f"{tag} tab title is Historic Shortwave ({pg.title()})")
         check("<!--" not in pg.content(), f"{tag} no HTML comments in the page")
-        check(not pg.evaluate("/1960-1989|1960 to 1989/.test(document.documentElement.outerHTML)"), f"{tag} recording years read 1969-1989 throughout the page")
+        check(not pg.evaluate("/1960-19(89|92)|1960 to 19(89|92)|1969-1989|1969 to 1989/.test(document.documentElement.outerHTML)"), f"{tag} recording years read 1969-1992 throughout the page")
         check(pg.evaluate("!document.querySelector('.receiver-description') && !document.body.innerHTML.includes('ARCHIVE BAND')"), f"{tag} hidden archive-band label removed")
         plate = pg.locator('#receiver .nameplate')
-        check("1969-1989" in plate.inner_text() and "1969 to 1989" in plate.get_attribute('aria-label'), f"{tag} nameplate reads 1969-1989")
+        check("1969-1992" in plate.inner_text() and "1969 to 1992" in plate.get_attribute('aria-label'), f"{tag} nameplate reads 1969-1992")
         vt = [pg.locator(s).get_attribute('aria-valuetext') for s in ('#tuning-knob', '#band-knob')]
         check(all(v.endswith("kilocycles") for v in vt), f"{tag} knob screen-reader values in kilocycles ({vt})")
         check(not pg.evaluate("/kilohertz|kHz|megahertz|MHz/.test(document.body.innerText)"), f"{tag} no kHz/MHz wording in the visible page")
@@ -156,9 +156,10 @@ with sync_playwright() as p:
     bad = [n for n in notes if any(s in n for s in ("From user inventory", "added at user request", "Also posted as", "user inventory", "owner decision", "borderline", "one row only"))]
     check(not bad, f"listener notes free of project bookkeeping ({len(bad)} left)")
     check(not [n for n in notes if "kHz" in n.replace("Khz", "").split("https://")[0]], "project notes use KC, not kHz (archive URLs aside)")
-    geo = pg.request.get(f"{base}/geo/period-borders-1969-1989.json")
-    check(geo.ok and all(f["end"] >= "1969-01-01" for f in geo.json()["features"]), "borders file covers 1969-1989 only")
-    check(pg.request.get(f"{base}/geo/period-borders-1960-1989.json").status == 404, "old 1960-1989 borders file not shipped")
+    geo = pg.request.get(f"{base}/geo/period-borders-1969-1992.json")
+    check(geo.ok and all(f["end"] >= "1969-01-01" and f["start"] <= "1992-12-31" for f in geo.json()["features"]), "borders file covers 1969-1992 only")
+    for old in ("1960-1989", "1969-1989", "1960-1992"):
+        check(pg.request.get(f"{base}/geo/period-borders-{old}.json").status == 404, f"old {old} borders file not shipped")
     ctx.close()
     b.close()
 print(f"\n{len(fails)} failed" if fails else "\nall passed"); sys.exit(1 if fails else 0)

@@ -5,9 +5,10 @@ const root = path.resolve(__dirname, '..');
 const C = require(path.join(root, 'app/heritage-h60/catalog.js'));
 const load = f => JSON.parse(fs.readFileSync(path.join(root, f)));
 
+// Before the 2026-11-27 era extension to 1992: 90 m 141/125, 49 m 350/261 with 76 outside the era.
 const expected = {
-  '90m': {total: 141, tunable: 125, compilation: 10, mirror: 6, era: 0, min: 3150000, max: 3500000},
-  '49m': {total: 350, tunable: 261, compilation: 5, mirror: 8, era: 76, min: 5850000, max: 6350000},
+  '90m': {total: 170, tunable: 154, compilation: 10, mirror: 6, era: 0, min: 3150000, max: 3500000},
+  '49m': {total: 354, tunable: 295, compilation: 5, mirror: 8, era: 46, min: 5850000, max: 6350000},
 };
 const summary = {};
 for (const [band, e] of Object.entries(expected)) {
@@ -35,7 +36,7 @@ for (const [band, e] of Object.entries(expected)) {
     assert.ok(r.frequencyHz >= e.min && r.frequencyHz <= e.max, `${r.inventoryId} inside dial`);
     assert.ok(!/^Compilation/.test(r.recordingType || ''), `${r.inventoryId} compilation held`);
     const ys = (String(r.date).match(/(?<!\d)(19\d\d|20\d\d)(?!\d)/g) || []).map(Number);
-    assert.ok(ys.length && Math.min(...ys) >= 1960 && Math.max(...ys) <= 1989, `${r.inventoryId} in era`);
+    assert.ok(ys.length && Math.min(...ys) >= 1960 && Math.max(...ys) <= 1992, `${r.inventoryId} in era`);
   }
   assert.equal(new Set(tun.map(r => r.audioUrl)).size, tun.length, 'no audio file tunable twice');
   // Carrier grouping and reachability with the receiver's existing catalog code.
@@ -47,13 +48,15 @@ for (const [band, e] of Object.entries(expected)) {
   for (let i = 1; i < groups.length; i++)
     assert.ok(groups[i - 1].hz + groups[i - 1].retainRadius < groups[i].hz - groups[i].retainRadius, 'groups do not overlap');
   assert.equal(C.findGroup(groups, e.min), null, 'dial start is clear');
-  assert.equal(C.findGroup(groups, e.max), null, 'dial end is clear');
+  // 2026-11-27: 90M-0173 La Voz de Guainia (3499.93 kHz, 1992) sits at the 3500 kHz end stop; the dial range was not changed.
+  if (band === '90m') assert.equal(C.findGroup(groups, e.max)?.records.map(r => r.inventoryId).join(), '90M-0173', 'dial end holds only 90M-0173');
+  else assert.equal(C.findGroup(groups, e.max), null, 'dial end is clear');
   const busiest = groups.reduce((a, g) => g.records.length > a.records.length ? g : a);
   summary[band] = {total: e.total, tunable: tun.length, frequencies: groups.length,
     busiestKHz: busiest.hz / 1000, busiestCount: busiest.records.length};
 }
-// The 60 m catalog is untouched by this phase.
+// The 60 m catalog (349 entries, 323 tunable before the 2026-11-27 era extension to 1992).
 const f60 = load('app/heritage-h60/full-inventory.json');
-assert.equal(f60.recordings.length, 349); assert.equal(f60.counts.tunable, 323);
+assert.equal(f60.recordings.length, 410); assert.equal(f60.counts.tunable, 384);
 assert.equal(f60.dialMinHz, 4700000); assert.equal(f60.dialMaxHz, 5085000);
-console.log(JSON.stringify({passed: true, ...summary, '60m': {total: 349, tunable: 323}}));
+console.log(JSON.stringify({passed: true, ...summary, '60m': {total: 410, tunable: 384}}));

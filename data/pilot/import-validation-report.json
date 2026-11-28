@@ -1,11 +1,11 @@
 {
   "schema_version": "1.1",
-  "generated_at_utc": "2026-10-20T15:38:55.913810+00:00",
+  "generated_at_utc": "2026-11-28T01:10:18.042820+00:00",
   "workbook_file": "60m_SWBC_recordings_1960-1989.xlsx",
-  "workbook_sha256": "577b424304166bd0d3292061ce218c64794a03cb883a7061eb86f9f1c67771ee",
+  "workbook_sha256": "c449a0c757614d629012c59d669bb59d96cf2ac02a8d5e299d0cacf966201880",
   "recording_year_scope": {
     "from": 1960,
-    "to": 1989,
+    "to": 1992,
     "complete_year_coverage_claimed": false
   },
   "band_scope": {
@@ -30,15 +30,15 @@
     "original_workbook_modified": false
   },
   "inventory_metrics": {
-    "qualified_naswa_entities_including_exceptions": 73,
-    "qualified_core_band_naswa_entities": 70,
-    "nominal_naswa_entities": 77,
-    "qualified_inventory_records": 330,
+    "qualified_naswa_entities_including_exceptions": 80,
+    "qualified_core_band_naswa_entities": 78,
+    "nominal_naswa_entities": 84,
+    "qualified_inventory_records": 391,
     "held_inventory_records": 19,
-    "total_inventory_records": 349
+    "total_inventory_records": 410
   },
-  "qualified_core_band_records": 319,
-  "qualified_band_edge_records": 11,
+  "qualified_core_band_records": 378,
+  "qualified_band_edge_records": 13,
   "standard_launch_approved_records": 0,
   "provisional_overlay_publication_approved_records": 0,
   "held_inventory_ids": [

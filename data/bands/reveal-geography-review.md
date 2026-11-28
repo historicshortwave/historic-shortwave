@@ -1,15 +1,15 @@
 # HR-64: Reveal Map Geography — Review List
 
-Built 2026-10-20 by `tools/build-reveal-geography.py`. 709 tunable recordings across three bands; 0 need a decision or a source check. Everything else maps directly from the country as labeled.
+Built 2026-11-28 by `tools/build-reveal-geography.py`. 833 tunable recordings across three bands; 0 need a decision or a source check. Everything else maps directly from the country as labeled.
 
 | Kind | Recordings |
 |---|---:|
-| Period country (CShapes) | 651 |
-| Region named by the source (Natural Earth inside a period country) | 29 |
-| Soviet republic or ASSR (Natural Earth, clipped to the USSR) | 8 |
+| Period country (CShapes) | 759 |
+| Region named by the source (Natural Earth inside a period country) | 38 |
+| Soviet republic or ASSR (Natural Earth, clipped to the USSR) | 13 |
 | Area CShapes does not map (Natural Earth) | 13 |
 | Whole USSR, republic not established | 1 |
-| No transmitter country established | 7 |
+| No transmitter country established | 9 |
 
 ## Rows needing a decision or source check
 
@@ -33,7 +33,7 @@ Built 2026-10-20 by `tools/build-reveal-geography.py`. 709 tunable recordings ac
 | 49 m | 49M-0338 | Azad Kashmir Radio | Azad Kashmir (Pakistan-administered Kashmir) | Owner accepts the approximate Azad Kashmir area. |
 | 60 m | 10 | ANGOLA Emisora Regional da Cabinda | Angola | Owner: list timing as unknown, 1970s; show independent Angola; credit Dan Robinson as recordist. |
 
-## No highlight (7)
+## No highlight (9)
 
-These show the caption only: 49M-0026 (clandestine station), 49M-0288 (clandestine station), 49M-0301 (transmitter location not stated), 49M-0307 (at sea (international waters)), 49M-0321 (clandestine station), 49M-0326 (clandestine station), 90M-0034 (unidentified station).
+These show the caption only: 49M-0026 (clandestine station), 49M-0288 (clandestine station), 49M-0291 (unidentified station), 49M-0301 (transmitter location not stated), 49M-0307 (at sea (international waters)), 49M-0321 (clandestine station), 49M-0326 (clandestine station), 49M-0348 (unidentified station), 90M-0034 (unidentified station).
 

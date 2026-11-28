@@ -29,7 +29,7 @@ recs = [r for c in cats.values() for r in c["recordings"]]
 urls = [r["audioUrl"] for r in recs]
 credits = json.loads((APP / "credits.json").read_text())["credits"]
 geo = json.loads((APP / "geo/reveal-geography.json").read_text())["entries"]
-check("release holds exactly the cleared Archive.org recordings", set(urls) == expected and len(urls) == len(set(urls)) == 550, (len(urls), len(expected)))
+check("release holds exactly the cleared Archive.org recordings", set(urls) == expected and len(urls) == len(set(urls)) == 670, (len(urls), len(expected)))
 check("no excluded recording URL anywhere in the build", not any(u in (APP / f).read_text() for f in ("band-90m.json", "band-60m.json", "band-49m.json", "credits.json") for u in list(excluded)[:400]))
 check("every recording is on archive.org", all(u.startswith("https://archive.org/") for u in urls))
 check("no review-only entries", all(r.get("testEligible") is not False for r in recs))
